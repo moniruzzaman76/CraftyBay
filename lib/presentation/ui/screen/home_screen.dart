@@ -2,8 +2,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/app_colors.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
+import 'package:flutter_ecommerce/presentation/ui/widgets/category_card.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import '../widgets/circular_button.dart';
+import '../widgets/product_card.dart';
+import '../widgets/section_header.dart';
+import 'categories_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -43,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(12.0),
           child: Column(
             children: [
               TextFormField(
@@ -86,6 +91,44 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }).toList(),
               ),
+              const SizedBox(height: 16,),
+                 SectionHeader(
+                   onTap: (){
+                     Get.to(const CategoriesListScreen());
+                   },
+                   text: "All Categories",
+                 ),
+              const SizedBox(height: 8,),
+              SizedBox(
+                height: 70,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: 10,
+                    itemBuilder:(context,index){
+                    return const CategoryCard();
+                    },
+                ),
+              ),
+              const SizedBox(height: 12,),
+              SectionHeader(
+                onTap: (){
+                  //Get.to(const CategoriesListScreen());
+                },
+                text: "Popular",
+              ),
+              const SizedBox(height: 8,),
+
+              SizedBox(
+                height: 155,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 6,
+                  itemBuilder: (BuildContext context, int index) {
+                    return const ProductCard();
+                  },
+                ),
+              )
 
             ],
           ),
@@ -94,5 +137,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
+
+
 
 
