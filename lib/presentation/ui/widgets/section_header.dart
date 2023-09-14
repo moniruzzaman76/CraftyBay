@@ -3,17 +3,17 @@ import '../utils/app_colors.dart';
 
 class SectionHeader extends StatelessWidget {
   const SectionHeader({
-    super.key, required this.onTap, required this.text,
+    super.key, required this.onTap, required this.title,
   });
 
   final VoidCallback onTap;
-  final String text;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(text,style: const TextStyle(
+        Text(title,style: const TextStyle(
           fontSize: 22,
           fontWeight: FontWeight.w500,
           color: Colors.black,

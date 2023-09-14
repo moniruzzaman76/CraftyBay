@@ -19,6 +19,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+
+ final ValueNotifier selectedSlider = ValueNotifier(0);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,8 +76,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
               CarouselSlider(
                 options: CarouselOptions(
-                    height: 200.0,
+                  height: 200,
+                  viewportFraction: 1,
                   autoPlay: true,
+                  onPageChanged: ( int page, _ ){
+                    selectedSlider.value = page;
+                  },
+
                 ),
                 items: [1,2,3,4,5].map((i) {
                   return Builder(
@@ -91,12 +99,38 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }).toList(),
               ),
+              const SizedBox(height: 8,),
+
+              ValueListenableBuilder(
+                valueListenable: selectedSlider,
+                builder: (BuildContext context, value, _) {
+                  List<Widget>list = [];
+                  for( int i = 0; i<5; i++){
+                    list.add( Container(
+                      margin: const EdgeInsets.symmetric(horizontal:4),
+                      height: 15,
+                      width: 15,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        shape: BoxShape.circle,
+                        color: value == i ? AppColors.primaryColor:Colors.white,
+                      ),
+                    ),);
+                  }
+                 return Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children:list,
+                 );
+                },
+              ),
+
+
               const SizedBox(height: 16,),
                  SectionHeader(
                    onTap: (){
                      Get.to(const CategoriesListScreen());
                    },
-                   text: "All Categories",
+                   title: "All Categories",
                  ),
               const SizedBox(height: 8,),
               SizedBox(
@@ -110,15 +144,57 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                 ),
               ),
+
+
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
                   //Get.to(const CategoriesListScreen());
                 },
-                text: "Popular",
+                title: "Popular",
               ),
               const SizedBox(height: 8,),
+              SizedBox(
+                height: 155,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 6,
+                  itemBuilder: (BuildContext context, int index) {
+                    return const ProductCard();
+                  },
+                ),
+              ),
 
+
+              const SizedBox(height: 12,),
+              SectionHeader(
+                onTap: (){
+                  //Get.to(const CategoriesListScreen());
+                },
+                title: "Special",
+              ),
+              const SizedBox(height: 8,),
+              SizedBox(
+                height: 155,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 6,
+                  itemBuilder: (BuildContext context, int index) {
+                    return const ProductCard();
+                  },
+                ),
+              ),
+
+
+
+              const SizedBox(height: 12,),
+              SectionHeader(
+                onTap: (){
+                  //Get.to(const CategoriesListScreen());
+                },
+                title: "New",
+              ),
+              const SizedBox(height: 8,),
               SizedBox(
                 height: 155,
                 child: ListView.builder(
@@ -129,6 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               )
+
 
             ],
           ),
