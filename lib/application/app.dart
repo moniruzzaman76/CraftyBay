@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/presentation/ui/screen/splash_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/app_colors.dart';
 import 'package:get/get.dart';
-
-import '../presentation/ui/screen/botom_nav_bar_screen.dart';
+import '../presentation/ui/screen/review_screen.dart';
 
 class CraftyBay extends StatelessWidget {
   const CraftyBay({Key? key}) : super(key: key);
@@ -45,7 +43,7 @@ class CraftyBay extends StatelessWidget {
 
 
       ),
-      home: const BottomNavBarScreen(),
+      home: const ReviewScreen(),
     );
   }
 }
