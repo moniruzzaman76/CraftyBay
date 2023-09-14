@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: MediaQuery.of(context).size.width,
                           margin: const EdgeInsets.symmetric(horizontal: 5.0),
                           decoration:const BoxDecoration(
-                              color: AppColors.primaryColor
+                              color: Colors.amberAccent
                           ),
                           child: Center(child: Text('text $i',))
                       );
@@ -155,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 8,),
               SizedBox(
-                height: 155,
+                height: 165,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 6,
@@ -175,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 8,),
               SizedBox(
-                height: 155,
+                height: 165,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 6,
@@ -196,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 8,),
               SizedBox(
-                height: 155,
+                height: 165,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 6,
