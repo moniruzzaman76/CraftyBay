@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
+import 'package:get/get.dart';
 import '../widgets/category_card.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -6,30 +8,39 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text("Categories",style: TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.w500
-        ),),
-        elevation: 0,
-        leading: const BackButton(
-          color: Colors.black,
+    return WillPopScope(
+      onWillPop: ()async{
+        Get.find<MainBottomNavController>().backToHome();
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: const Text("Categories",style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w500
+          ),),
+          elevation: 0,
+          leading:BackButton(
+            onPressed: (){
+              Get.find<MainBottomNavController>().backToHome();
+            },
+            color: Colors.black,
+          ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: GridView.builder(
-          itemCount: 12,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-            ) ,
-            itemBuilder: (context, index){
-              return const CategoryCard();
-            }
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: GridView.builder(
+            itemCount: 12,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+              ) ,
+              itemBuilder: (context, index){
+                return const CategoryCard();
+              }
+          ),
         ),
       ),
     );

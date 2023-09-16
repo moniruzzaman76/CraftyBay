@@ -18,23 +18,18 @@ class _ReviewScreenState extends State<ReviewScreen> {
       appBar:  AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            IconButton(
-              onPressed: (){
-
-              }, icon: Icon(
-              Icons.arrow_back_outlined,
-              color: Colors.black.withOpacity(.5),
-              size: 22,
-            ),),
-            const Text("Reviews",style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w400,
-            ),),
-
-          ],
-        ),
+        title: const Text("Reviews",style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.w400,
+        ),),
+        leading:  IconButton(
+          onPressed: (){
+            Get.back();
+          }, icon: Icon(
+          Icons.arrow_back_outlined,
+          color: Colors.black.withOpacity(.5),
+          size: 22,
+        ),),
       ),
       body: Column(
         children: [

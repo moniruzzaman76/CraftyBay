@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../../State_holders/main_botom_nav_controller.dart';
 import '../widgets/product_card.dart';
 class WishScreen extends StatefulWidget {
   const WishScreen({Key? key}) : super(key: key);
@@ -12,43 +14,41 @@ class _WishScreenState extends State<WishScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 1,
-        backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            IconButton(
+    return WillPopScope(
+      onWillPop: ()async{
+        Get.find<MainBottomNavController>().backToHome();
+        return false;
+      },
+      child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: const Text("Wish List",style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w500
+            ),),
+            elevation: 0,
+            leading:BackButton(
               onPressed: (){
-
-
-              }, icon: Icon(
-              Icons.arrow_back_ios_new,
-              color: Colors.black.withOpacity(.5),
-              size: 22,
-            ),),
-            const Text("Wish List",style: TextStyle(
+                Get.find<MainBottomNavController>().backToHome();
+              },
               color: Colors.black,
-              fontWeight: FontWeight.w400,
-            ),),
-
-          ],
-        ),
-      ),
-        body:Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GridView.builder(
-              itemCount: 20,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 8,
-                  childAspectRatio: 5/6
-              ) ,
-              itemBuilder: (context, index){
-                return const ProductCard();
-              }
+            ),
           ),
-        )
+          body:Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GridView.builder(
+                itemCount: 20,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 8,
+                    childAspectRatio: 5/6
+                ) ,
+                itemBuilder: (context, index){
+                  return const ProductCard();
+                }
+            ),
+          )
+      ),
     );
   }
 }

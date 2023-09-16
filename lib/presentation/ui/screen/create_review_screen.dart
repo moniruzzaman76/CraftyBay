@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 
 class CreateReviewScreen extends StatefulWidget {
@@ -23,22 +25,18 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
       appBar:  AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            IconButton(
-              onPressed: (){
-                Navigator.pop(context);
-              }, icon: Icon(
-              Icons.arrow_back_outlined,
-              color: Colors.black.withOpacity(.5),
-              size: 25,
-            ),),
-            const Text("Create Reviews",style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w400,
-            ),),
-          ],
-        ),
+        title: const Text("Create Reviews",style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.w400,
+        ),),
+        leading:  IconButton(
+          onPressed: (){
+            Get.back();
+          }, icon: Icon(
+          Icons.arrow_back_outlined,
+          color: Colors.black.withOpacity(.5),
+          size: 22,
+        ),),
       ),
       body: SafeArea(
         child: SingleChildScrollView(

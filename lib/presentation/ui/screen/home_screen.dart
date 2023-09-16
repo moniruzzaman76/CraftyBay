@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/category_list_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/app_colors.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
@@ -128,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 16,),
                  SectionHeader(
                    onTap: (){
-                     Get.to(const CateGoryListScreen());
+                    Get.find<MainBottomNavController>().changeScreen(1);
                    },
                    title: "All Categories",
                  ),

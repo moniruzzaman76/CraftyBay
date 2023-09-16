@@ -3,10 +3,13 @@ import '../utils/app_colors.dart';
 
 class PaymentCard extends StatelessWidget {
   const PaymentCard({
-    super.key, required this.title, required this.buttonName,
+    super.key, required this.title, required this.buttonName, this.fontSize,
   });
   final String title;
   final String buttonName;
+  final double ? fontSize;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +28,8 @@ class PaymentCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 5,),
-          Text(title,style: const TextStyle(
-            fontSize: 12,
+          Text(title,style: TextStyle(
+            fontSize: fontSize ?? 12,
           ),),
           Row(
             children: [
