@@ -116,6 +116,7 @@ class _CardScreenState extends State<CardScreen> {
           ),
 
            const PaymentCard(
+
              title: 'Total Price',
              buttonName: "Checkout",
 
