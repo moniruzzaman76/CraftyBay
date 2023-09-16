@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/card_screen.dart';
-import 'package:flutter_ecommerce/presentation/ui/screen/category_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/home_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/wish_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/app_colors.dart';
+
+import 'categories_screen.dart';
 
 class BottomNavBarScreen extends StatefulWidget {
   const BottomNavBarScreen({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
   int selectedIndex = 0;
   final List<Widget> _screen = [
     const HomeScreen(),
-    const CateGoryScreen(),
+    const CategoryScreen(),
     const CardScreen(),
     const WishScreen(),
   ];

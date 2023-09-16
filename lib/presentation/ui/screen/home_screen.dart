@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/category_list_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/app_colors.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/category_card.dart';
@@ -8,7 +9,6 @@ import 'package:get/get.dart';
 import '../widgets/circular_button.dart';
 import '../widgets/product_card.dart';
 import '../widgets/section_header.dart';
-import 'categories_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -128,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 16,),
                  SectionHeader(
                    onTap: (){
-                     Get.to(const CategoriesListScreen());
+                     Get.to(const CateGoryListScreen());
                    },
                    title: "All Categories",
                  ),
@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                  //Get.to(const CategoriesListScreen());
+                  Get.to(const CateGoryListScreen());
                 },
                 title: "Popular",
               ),
@@ -169,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                  //Get.to(const CategoriesListScreen());
+                  Get.to(const CateGoryListScreen());
                 },
                 title: "Special",
               ),
@@ -189,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                  //Get.to(const CategoriesListScreen());
+                  Get.to(const CateGoryListScreen());
                 },
                 title: "New",
               ),
