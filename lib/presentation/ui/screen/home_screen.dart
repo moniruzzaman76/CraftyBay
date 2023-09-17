@@ -1,10 +1,10 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/category_list_screen.dart';
-import 'package:flutter_ecommerce/presentation/ui/utils/app_colors.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/category_card.dart';
+import 'package:flutter_ecommerce/presentation/ui/widgets/dots_indicator.dart';
+import 'package:flutter_ecommerce/presentation/ui/widgets/image_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../widgets/circular_button.dart';
@@ -75,56 +75,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 16,),
 
-              CarouselSlider(
-                options: CarouselOptions(
-                  height: 200,
-                  viewportFraction: 1,
-                  autoPlay: true,
-                  onPageChanged: ( int page, _ ){
-                    selectedSlider.value = page;
-                  },
-
-                ),
-                items: [1,2,3,4,5].map((i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                          decoration:const BoxDecoration(
-                              color: Colors.amberAccent
-                          ),
-                          child: Center(child: Text('text $i',))
-                      );
-                    },
-                  );
-                }).toList(),
-              ),
+             ImageSlider(selectedSlider: selectedSlider,height: 200,),
               const SizedBox(height: 8,),
-
-              ValueListenableBuilder(
-                valueListenable: selectedSlider,
-                builder: (BuildContext context, value, _) {
-                  List<Widget>list = [];
-                  for( int i = 0; i<5; i++){
-                    list.add( Container(
-                      margin: const EdgeInsets.symmetric(horizontal:4),
-                      height: 15,
-                      width: 15,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        shape: BoxShape.circle,
-                        color: value == i ? AppColors.primaryColor:Colors.white,
-                      ),
-                    ),);
-                  }
-                 return Row(
-                   mainAxisAlignment: MainAxisAlignment.center,
-                   children:list,
-                 );
-                },
-              ),
-
+              DotsIndicator(selectedSlider: selectedSlider),
 
               const SizedBox(height: 16,),
                  SectionHeader(
