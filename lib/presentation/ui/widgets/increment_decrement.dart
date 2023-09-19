@@ -24,8 +24,8 @@ class _IncrementDecrementState extends State<IncrementDecrement> {
             setState(() {});
           },
           child: Container(
-            height: 18,
-            width: 20,
+            height: 22,
+            width: 22,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: AppColors.primaryColor.withOpacity(.7),
@@ -41,6 +41,7 @@ class _IncrementDecrementState extends State<IncrementDecrement> {
         const SizedBox(width:8,),
         Text( count.toString(),style: const TextStyle(
           fontWeight: FontWeight.bold,
+          fontSize: 15,
         ),),
         const SizedBox(width:8,),
 
@@ -50,8 +51,8 @@ class _IncrementDecrementState extends State<IncrementDecrement> {
             setState(() {});
           },
           child: Container(
-            height: 18,
-            width: 20,
+            height: 22,
+            width: 22,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: AppColors.primaryColor,

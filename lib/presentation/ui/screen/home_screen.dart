@@ -3,13 +3,12 @@ import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/category_list_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/category_card.dart';
-import 'package:flutter_ecommerce/presentation/ui/widgets/dots_indicator.dart';
-import 'package:flutter_ecommerce/presentation/ui/widgets/image_slider.dart';
+import 'package:flutter_ecommerce/presentation/ui/widgets/home/home_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../widgets/circular_button.dart';
 import '../widgets/product_card.dart';
-import '../widgets/section_header.dart';
+import '../widgets/home/section_header.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -75,9 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 16,),
 
-             ImageSlider(selectedSlider: selectedSlider,height: 200,),
-              const SizedBox(height: 8,),
-              DotsIndicator(selectedSlider: selectedSlider),
+             const HomeSlider(),
 
               const SizedBox(height: 16,),
                  SectionHeader(

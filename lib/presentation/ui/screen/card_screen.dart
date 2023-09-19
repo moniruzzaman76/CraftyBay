@@ -6,6 +6,7 @@ import '../../../State_holders/main_botom_nav_controller.dart';
 import '../utils/image_assets.dart';
 import '../widgets/payment_card.dart';
 
+
 class CardScreen extends StatefulWidget {
   const CardScreen({Key? key}) : super(key: key);
 
@@ -117,10 +118,12 @@ class _CardScreenState extends State<CardScreen> {
             ),
 
              const PaymentCard(
-               title: 'Total Price',
-               buttonName: "Checkout",
-
-             )
+              padding:  EdgeInsets.symmetric(horizontal: 16, vertical: 17),
+              title:"Total Price" ,
+              titleFontSize: 12,
+              totalCount: '\$100.000',
+              buttonName: 'check out',
+            ),
           ],
         )
       ),
