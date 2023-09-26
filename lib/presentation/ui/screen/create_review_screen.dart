@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 
 class CreateReviewScreen extends StatefulWidget {
@@ -29,14 +27,9 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
           color: Colors.black,
           fontWeight: FontWeight.w400,
         ),),
-        leading:  IconButton(
-          onPressed: (){
-            Get.back();
-          }, icon: Icon(
-          Icons.arrow_back_outlined,
-          color: Colors.black.withOpacity(.5),
-          size: 22,
-        ),),
+        leading: const BackButton(
+          color: Colors.black54,
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(

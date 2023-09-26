@@ -4,14 +4,14 @@ import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class EmailVerificationScreen extends StatefulWidget {
+  const EmailVerificationScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<EmailVerificationScreen> createState() => _EmailVerificationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
 
   TextEditingController emailEditingController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -44,6 +44,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter email address';
+                        //ReGex validation
+                      // }else if(value.isEmpty == false){
+                      //   return "Please enter valid email address";
                       }
                       return null;
                     },

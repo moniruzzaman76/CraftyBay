@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/auth/email_verify_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/review_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/home/product_image_slider.dart';
 import 'package:get/get.dart';
@@ -66,14 +67,20 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 child: SectionTitle(title: "Happy New year Special Deal Save 30%",maxLine: 2,),
                               ),
                               const Spacer(),
-                              CustomStepper(
-                                  lowerLimit: 1,
-                                  upperLimit: 10,
-                                  stepValue: 1,
-                                  value: 1,
-                                  onChange: (newValue) {
-                                    print(newValue);
-                                  })
+
+                              SizedBox(
+                                height: 30,
+                                child: FittedBox(
+                                  child: CustomStepper(
+                                      lowerLimit: 1,
+                                      upperLimit: 10,
+                                      stepValue: 1,
+                                      value: 1,
+                                      onChange: (newValue) {
+                                        print(newValue);
+                                      }),
+                                ),
+                              )
                             ],
                           ),
                           const SizedBox(height: 5,),
@@ -186,7 +193,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             fontSize: 15,
                             color: Colors.black87,
                           ),),
-
                         ],
                       ),
                     ),
@@ -194,10 +200,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 ),
               ),
             ),
-             const PaymentCard(
+              PaymentCard(
               title:"Price" ,
                totalCount: '\$1000',
                buttonName: 'Add to cart',
+               onTab: (){
+                Get.to(const EmailVerificationScreen());
+               },
             ),
           ],
         ),

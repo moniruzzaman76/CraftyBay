@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/app_colors.dart';
-import 'package:flutter_ecommerce/presentation/ui/widgets/increment_decrement.dart';
 import 'package:get/get.dart';
 import '../../../State_holders/main_botom_nav_controller.dart';
 import '../utils/image_assets.dart';
+import '../widgets/custom_stepper.dart';
 import '../widgets/payment_card.dart';
 
 
@@ -48,7 +48,7 @@ class _CardScreenState extends State<CardScreen> {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: SizedBox(
-                        height: 120,
+                        height: 126,
                         child: Card(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
@@ -84,24 +84,36 @@ class _CardScreenState extends State<CardScreen> {
 
                                       ],
                                     ),
-                                    subtitle: const Column(
+                                    subtitle:Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text("Color : Red, Size : X",style: TextStyle(
+                                        const Text("Color : Red, Size : X",style: TextStyle(
                                           fontSize: 14,
                                           letterSpacing: .5,
                                         ),),
-                                        SizedBox(height: 12,),
+                                        const SizedBox(height: 12,),
                                         Row(
                                           children: [
 
-                                            Text("\$100",style: TextStyle(
-                                              fontSize: 18,
+                                            const Text("\$100",style: TextStyle(
+                                              fontSize: 20,
                                               fontWeight: FontWeight.w600,
                                               color: AppColors.primaryColor,
                                             ),),
-                                            Spacer(),
-                                            IncrementDecrement(),
+                                            const Spacer(),
+                                            SizedBox(
+                                              height: 30,
+                                              child: FittedBox(
+                                                child: CustomStepper(
+                                                    lowerLimit: 1,
+                                                    upperLimit: 10,
+                                                    stepValue: 1,
+                                                    value: 1,
+                                                    onChange: (newValue) {
+                                                      print(newValue);
+                                                    }),
+                                              ),
+                                            )
                                           ],
                                         )
                                       ],
@@ -117,12 +129,13 @@ class _CardScreenState extends State<CardScreen> {
               ),
             ),
 
-             const PaymentCard(
-              padding:  EdgeInsets.symmetric(horizontal: 16, vertical: 17),
+              PaymentCard(
+              padding:  const EdgeInsets.symmetric(horizontal: 16, vertical: 17),
               title:"Total Price" ,
               titleFontSize: 12,
               totalCount: '\$100.000',
               buttonName: 'check out',
+                onTab: (){},
             ),
           ],
         )

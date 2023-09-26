@@ -16,7 +16,6 @@ class CraftyBay extends StatelessWidget {
           primarySwatch:
               MaterialColor(AppColors.primaryColor.value, AppColors().color),
 
-
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 12),

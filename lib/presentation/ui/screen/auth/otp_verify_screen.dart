@@ -110,7 +110,9 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
                     ),
                   ),
                   TextButton(
-                      onPressed: (){}, child:const Text("Resent Code",style: TextStyle(
+                      onPressed: (){
+
+                      }, child:const Text("Resent Code",style: TextStyle(
                     color: AppColors.primaryColor,
                   ),)
                   )
