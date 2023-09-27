@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/otp_verify_controller.dart';
-import 'package:flutter_ecommerce/presentation/ui/screen/home_screen.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/auth/profile_complete_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -93,10 +93,11 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
                           replacement: const Center(child: CircularProgressIndicator(),),
                           child: ElevatedButton(
                               onPressed: (){
+
                                 if (_formKey.currentState!.validate()){
                                   otpVerifyController.otpVerify(widget.email, otpEditingController.text).then((result){
                                     if(result == true){
-                                      Get.to(()=> const HomeScreen());
+                                      Get.to(()=> const ProfileCompleteScreen());
                                     }else{
                                       Get.snackbar(
                                           "failed", "Email verify failed!.try again",
@@ -106,6 +107,7 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
                                     }
                                   });
                                 }
+
                               }, child: const Text(
                               "Next"
                           )),
