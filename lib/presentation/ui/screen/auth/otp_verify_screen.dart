@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/presentation/ui/screen/auth/profile_complete_screen.dart';
+import 'package:flutter_ecommerce/State_holders/otp_verify_controller.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/home_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -7,7 +8,8 @@ import '../../utils/app_colors.dart';
 import '../../utils/image_assets.dart';
 
 class OTPVerifyScreen extends StatefulWidget {
-  const OTPVerifyScreen({Key? key}) : super(key: key);
+  const OTPVerifyScreen({Key? key, required this.email}) : super(key: key);
+  final String email;
 
   @override
   State<OTPVerifyScreen> createState() => _OTPVerifyScreenState();
@@ -84,15 +86,32 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
 
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(
-                        onPressed: (){
-                          if (_formKey.currentState!.validate()){
-                            Get.to(const ProfileCompleteScreen());
-                          }
-
-                        }, child: const Text(
-                        "Next"
-                    )),
+                    child: GetBuilder<OTPVerifyController>(
+                      builder: (otpVerifyController) {
+                        return Visibility(
+                          visible: !otpVerifyController.otpVerifyInProgress,
+                          replacement: const Center(child: CircularProgressIndicator(),),
+                          child: ElevatedButton(
+                              onPressed: (){
+                                if (_formKey.currentState!.validate()){
+                                  otpVerifyController.otpVerify(widget.email, otpEditingController.text).then((result){
+                                    if(result == true){
+                                      Get.to(()=> const HomeScreen());
+                                    }else{
+                                      Get.snackbar(
+                                          "failed", "Email verify failed!.try again",
+                                          backgroundColor: Colors.red,
+                                          colorText: Colors.white
+                                      );
+                                    }
+                                  });
+                                }
+                              }, child: const Text(
+                              "Next"
+                          )),
+                        );
+                      }
+                    ),
                   ),
                   const SizedBox(
                     height: 16,
@@ -111,7 +130,6 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
                   ),
                   TextButton(
                       onPressed: (){
-
                       }, child:const Text("Resent Code",style: TextStyle(
                     color: AppColors.primaryColor,
                   ),)
@@ -125,3 +143,4 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
     );
   }
 }
+

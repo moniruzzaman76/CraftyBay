@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/presentation/ui/screen/auth/email_verify_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/review_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/home/product_image_slider.dart';
 import 'package:get/get.dart';
@@ -205,7 +204,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                totalCount: '\$1000',
                buttonName: 'Add to cart',
                onTab: (){
-                Get.to(const EmailVerificationScreen());
+
                },
             ),
           ],

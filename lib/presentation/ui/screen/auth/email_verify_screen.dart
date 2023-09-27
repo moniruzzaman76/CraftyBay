@@ -71,11 +71,11 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                                 if (_formKey.currentState!.validate()){
                                   emailVerifyController.emailVerify(emailEditingController.text.trim()).then((result){
                                     if(result == true){
-                                      Get.to(()=>const OTPVerifyScreen());
+                                      Get.to(()=> OTPVerifyScreen(email: emailEditingController.text.trim(),));
                                     }else{
                                       Get.snackbar(
                                           "failed", "Email verify failed!.try again",
-                                          backgroundColor: Colors.green,
+                                          backgroundColor: Colors.red,
                                           colorText: Colors.white
                                       );
                                     }
