@@ -5,7 +5,7 @@ import 'package:flutter_ecommerce/presentation/ui/screen/home_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/wish_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/app_colors.dart';
 import 'package:get/get.dart';
-
+import '../../../State_holders/home_sliders_controller.dart';
 import 'categories_screen.dart';
 
 class BottomNavBarScreen extends StatefulWidget {
@@ -17,8 +17,14 @@ class BottomNavBarScreen extends StatefulWidget {
 
 class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
 
-  //MainBottomNavController mainBottomNavController = Get.put(MainBottomNavController());
 
+@override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Get.find<HomeSlidersController>().productHomeSlider();
+    });
+  }
 
 
   final List<Widget> _screen = [

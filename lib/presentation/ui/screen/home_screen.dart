@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/home_sliders_controller.dart';
 import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/category_list_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
@@ -21,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
  final ValueNotifier selectedSlider = ValueNotifier(0);
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +76,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 16,),
 
-             const HomeSlider(),
+             GetBuilder<HomeSlidersController>(
+               builder: (homeSlidersController) {
+                 return Visibility(
+                   visible: !homeSlidersController.homeSliderInProgress,
+                   replacement: const Center(child: CircularProgressIndicator(),),
+                     child: HomeSlider(slidersData: homeSlidersController.productHomeSlidersModel.data ?? [],));
+               }
+             ),
 
               const SizedBox(height: 16,),
                  SectionHeader(

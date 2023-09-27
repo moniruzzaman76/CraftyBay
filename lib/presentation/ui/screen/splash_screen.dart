@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/data/model/auth_controller.dart';
+import 'package:flutter_ecommerce/State_holders/auth_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/botom_nav_bar_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
