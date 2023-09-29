@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/category_controller.dart';
 import 'package:flutter_ecommerce/State_holders/home_sliders_controller.dart';
 import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
+import 'package:flutter_ecommerce/State_holders/product_new_controller.dart';
+import 'package:flutter_ecommerce/State_holders/product_popular_controller.dart';
+import 'package:flutter_ecommerce/State_holders/product_special_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/category_list_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/category_card.dart';
@@ -114,7 +117,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
               ),
 
-
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
@@ -123,15 +125,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: "Popular",
               ),
               const SizedBox(height: 8,),
-              SizedBox(
-                height: 165,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 6,
-                  itemBuilder: (BuildContext context, int index) {
-                    return const ProductCard();
-                  },
-                ),
+              GetBuilder<ProductPopularController>(
+                builder: (productPopularController) {
+                  return Visibility(
+                    visible: !productPopularController.productRemarkModelInProgress,
+                    replacement: const Center(child: CircularProgressIndicator(),),
+                    child: SizedBox(
+                      height: 165,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: productPopularController.popularModel.data?.length ?? 0,
+                        itemBuilder: (BuildContext context, int index) {
+                          return  ProductCard(remarkData: productPopularController.popularModel.data![index],);
+                        },
+                      ),
+                    ),
+                  );
+                }
               ),
 
 
@@ -143,15 +153,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: "Special",
               ),
               const SizedBox(height: 8,),
-              SizedBox(
-                height: 165,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 6,
-                  itemBuilder: (BuildContext context, int index) {
-                    return const ProductCard();
-                  },
-                ),
+              GetBuilder<ProductSpecialController>(
+                builder: (productSpecialController) {
+                  return Visibility(
+                    visible: !productSpecialController.productSpecialInProgress,
+                    replacement: const Center(child: CircularProgressIndicator(),),
+                    child: SizedBox(
+                      height: 165,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: productSpecialController.specialModel.data?.length ?? 0,
+                        itemBuilder: (BuildContext context, int index) {
+                           return  ProductCard(remarkData: productSpecialController.specialModel.data![index],);
+                        },
+                      ),
+                    ),
+                  );
+                }
               ),
 
 
@@ -163,15 +181,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: "New",
               ),
               const SizedBox(height: 8,),
-              SizedBox(
-                height: 165,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 6,
-                  itemBuilder: (BuildContext context, int index) {
-                    return const ProductCard();
-                  },
-                ),
+              GetBuilder<ProductNewController>(
+                builder: (productNewController) {
+                  return Visibility(
+                    visible: !productNewController.productNewInProgress,
+                    replacement: const Center(child: CircularProgressIndicator(),),
+                    child: SizedBox(
+                      height: 165,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: productNewController.newModel.data?.length ?? 0,
+                        itemBuilder: (BuildContext context, int index) {
+                           return  ProductCard(remarkData: productNewController.newModel.data![index]);
+                        },
+                      ),
+                    ),
+                  );
+                }
               )
             ],
           ),

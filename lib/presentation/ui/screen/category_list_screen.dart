@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/presentation/ui/widgets/product_card.dart';
+import 'package:flutter_ecommerce/State_holders/product_popular_controller.dart';
 import 'package:get/get.dart';
+import '../widgets/product_card.dart';
 
-class CateGoryListScreen extends StatefulWidget {
+class CateGoryListScreen extends StatelessWidget {
   const CateGoryListScreen({Key? key}) : super(key: key);
 
-  @override
-  State<CateGoryListScreen> createState() => _CateGoryListScreenState();
-}
-
-class _CateGoryListScreenState extends State<CateGoryListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,16 +27,20 @@ class _CateGoryListScreenState extends State<CateGoryListScreen> {
       ),
       body:Padding(
         padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-            itemCount: 20,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              mainAxisSpacing: 8,
-              childAspectRatio: 7/8
-            ) ,
-            itemBuilder: (context, index){
-              return const ProductCard();
-            }
+        child: GetBuilder<ProductPopularController>(
+          builder: (productRemarkController) {
+            return GridView.builder(
+                itemCount: productRemarkController.popularModel.data?.length ?? 0,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 8,
+                  childAspectRatio: 7/8
+                ) ,
+                itemBuilder: (context, index){
+                  return  ProductCard(remarkData:productRemarkController.popularModel.data![index]);
+                }
+            );
+          }
         ),
       )
     );

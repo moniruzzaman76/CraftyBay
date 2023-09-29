@@ -33,20 +33,16 @@ class CategoryScreen extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: GetBuilder<CategoryController>(
             builder: (categoryController) {
-              return Visibility(
-                visible: !categoryController.categoryInProgress,
-                replacement: const Center(child: CircularProgressIndicator(),),
-                child: GridView.builder(
-                  itemCount: categoryController.categoryModel.data?.length ?? 0,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                    ) ,
-                    itemBuilder: (context, index){
-                       return  CategoryCard(categoryData: categoryController.categoryModel.data![index],);
-                    }
-                ),
+              return GridView.builder(
+                itemCount: categoryController.categoryModel.data?.length ?? 0,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                  ) ,
+                  itemBuilder: (context, index){
+                     return  CategoryCard(categoryData: categoryController.categoryModel.data![index],);
+                  }
               );
             }
           ),

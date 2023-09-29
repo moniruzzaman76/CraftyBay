@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../State_holders/main_botom_nav_controller.dart';
-import '../widgets/product_card.dart';
 class WishScreen extends StatefulWidget {
   const WishScreen({Key? key}) : super(key: key);
 
@@ -44,7 +43,7 @@ class _WishScreenState extends State<WishScreen> {
                     childAspectRatio: 5/6
                 ) ,
                 itemBuilder: (context, index){
-                  return const ProductCard();
+                  //return const ProductCard();
                 }
             ),
           )
