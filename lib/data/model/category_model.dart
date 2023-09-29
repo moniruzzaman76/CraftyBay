@@ -1,17 +1,17 @@
-import 'package:flutter_ecommerce/data/model/model_data/slider_model_data.dart';
+import 'model_data/category_model_data.dart';
 
-class ProductHomeSlidersModel {
+class CategoryModel {
   String? msg;
-  List<SliderData>? data;
+  List<CategoryData>? data;
 
-  ProductHomeSlidersModel({this.msg, this.data});
+  CategoryModel({this.msg, this.data});
 
-  ProductHomeSlidersModel.fromJson(Map<String, dynamic> json) {
+  CategoryModel.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     if (json['data'] != null) {
-      data = <SliderData>[];
+      data = <CategoryData>[];
       json['data'].forEach((v) {
-        data!.add(SliderData.fromJson(v));
+        data!.add(CategoryData.fromJson(v));
       });
     }
   }

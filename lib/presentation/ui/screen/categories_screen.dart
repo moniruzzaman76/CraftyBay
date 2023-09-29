@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
 import 'package:get/get.dart';
-import '../widgets/category_card.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({Key? key}) : super(key: key);
@@ -38,7 +37,8 @@ class CategoryScreen extends StatelessWidget {
                 mainAxisSpacing: 16,
               ) ,
               itemBuilder: (context, index){
-                return const CategoryCard();
+                 // return const CategoryCard();
+                return SizedBox();
               }
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/category_controller.dart';
 import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/card_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/home_screen.dart';
@@ -23,6 +24,7 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Get.find<HomeSlidersController>().productHomeSlider();
+      Get.find<CategoryController>().getCategoryProduct();
     });
   }
 

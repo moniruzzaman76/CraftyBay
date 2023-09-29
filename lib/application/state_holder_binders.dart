@@ -1,3 +1,4 @@
+import 'package:flutter_ecommerce/State_holders/category_controller.dart';
 import 'package:flutter_ecommerce/State_holders/home_sliders_controller.dart';
 import 'package:flutter_ecommerce/State_holders/otp_verify_controller.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ class StateHolderBinder extends Bindings{
     Get.put(EmailVerifyController());
     Get.put(OTPVerifyController());
     Get.put(HomeSlidersController());
+    Get.put(CategoryController());
 
   }
 }

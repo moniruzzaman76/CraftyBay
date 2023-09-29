@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import '../../../../data/model/slider_model_data.dart';
+import '../../../../data/model/model_data/slider_model_data.dart';
 import '../../utils/app_colors.dart';
 
 class HomeSlider extends StatefulWidget {

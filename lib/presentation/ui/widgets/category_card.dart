@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import '../../../data/model/model_data/category_model_data.dart';
 import '../utils/app_colors.dart';
 
 class CategoryCard extends StatelessWidget {
+  final CategoryData categoryData;
   const CategoryCard({
-    super.key,
+    super.key, required this.categoryData,
   });
 
   @override
@@ -17,11 +19,7 @@ class CategoryCard extends StatelessWidget {
           color: AppColors.primaryColor.withOpacity(.1),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Icon(
-          Icons.shop,
-          color: AppColors.primaryColor,
-          size: 32,
-        ),
+        child: Image.network(categoryData.categoryImg ?? "",height: 70,width: 85,),
       ),
     );
   }
