@@ -1,3 +1,4 @@
+import 'package:flutter_ecommerce/State_holders/CreateWishListController.dart';
 import 'package:flutter_ecommerce/State_holders/category_controller.dart';
 import 'package:flutter_ecommerce/State_holders/home_sliders_controller.dart';
 import 'package:flutter_ecommerce/State_holders/otp_verify_controller.dart';
@@ -19,6 +20,7 @@ class StateHolderBinder extends Bindings{
     Get.put(ProductPopularController());
     Get.put(ProductSpecialController());
     Get.put(ProductNewController());
+    Get.put(CreateWishListController());
 
   }
 }

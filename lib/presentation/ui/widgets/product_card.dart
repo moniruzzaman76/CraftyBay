@@ -6,8 +6,9 @@ import '../utils/app_colors.dart';
 
 class ProductCard extends StatelessWidget {
   final RemarkData remarkData;
+  final VoidCallback onPress;
   const ProductCard({
-    super.key, required this.remarkData,
+    super.key, required this.remarkData, required this.onPress,
   });
 
   @override
@@ -65,12 +66,15 @@ class ProductCard extends StatelessWidget {
                                fontWeight: FontWeight.w500,
                              ),),
                              const SizedBox(width: 12,),
-                             const Card(
-                               color: AppColors.primaryColor,
-                               child: Icon(
-                                 Icons.favorite_border_outlined,
-                                 color: Colors.white,
-                                 size: 14,
+                             InkWell(
+                               onTap:onPress,
+                               child: const Card(
+                                 color: AppColors.primaryColor,
+                                 child: Icon(
+                                   Icons.favorite_border_outlined,
+                                   color: Colors.white,
+                                   size: 14,
+                                 ),
                                ),
                              ),
                            ],

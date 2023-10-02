@@ -34,9 +34,5 @@ class ProductSpecialController extends GetxController{
       return false;
     }
   }
-
-
-
-
-
 }
+

@@ -37,7 +37,10 @@ class CateGoryListScreen extends StatelessWidget {
                   childAspectRatio: 7/8
                 ) ,
                 itemBuilder: (context, index){
-                  return  ProductCard(remarkData:productRemarkController.popularModel.data![index]);
+                  return  ProductCard(
+                      remarkData:productRemarkController.popularModel.data![index],
+                    onPress: (){},
+                  );
                 }
             );
           }
