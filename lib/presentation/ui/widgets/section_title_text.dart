@@ -12,7 +12,7 @@ class SectionTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(title,maxLines:maxLine ?? 1 ,style: TextStyle(
-      fontSize: fontSize ?? 18,
+      fontSize: fontSize ?? 20,
       color: Colors.black87,
       fontWeight: FontWeight.bold,
       overflow: TextOverflow.ellipsis,
