@@ -8,6 +8,8 @@ class Urls {
 
   static String getHomeSliders = '$_baseUrl/ListProductSlider';
   static String categoryProduct = '$_baseUrl/CategoryList';
+  static String getProductByCategory(int id) => '$_baseUrl/ListProductByCategory/$id';
+
   static String getProductByRemark(String remark) => '$_baseUrl/ListProductByRemark/$remark';
   static String createWishList(String productId) => '$_baseUrl/CreateWishList/$productId';
   static String productDetails(int id) => '$_baseUrl/ProductDetailsById/$id';

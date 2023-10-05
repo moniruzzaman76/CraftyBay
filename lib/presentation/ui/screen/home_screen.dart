@@ -6,7 +6,7 @@ import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_new_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_popular_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_special_controller.dart';
-import 'package:flutter_ecommerce/presentation/ui/screen/category_list_screen.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/product_list_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/category_card.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/home/home_slider.dart';
@@ -103,13 +103,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     visible: !categoryController.categoryInProgress,
                     replacement: const Center(child: CircularProgressIndicator(),),
                     child: SizedBox(
-                      height: 70,
+                      height: 110,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
                         itemCount: categoryController.categoryModel.data?.length ?? 0,
                           itemBuilder:(context,index){
-                          return  CategoryCard(categoryData: categoryController.categoryModel.data![index],);
+                          return  CategoryCard(
+                            categoryData: categoryController.categoryModel.data![index],
+                            onPress: (){
+                              Get.to(ProductListScreen(categoryId: categoryController.categoryModel.data![index].id!));
+                            },
+                          );
                           },
                       ),
                     ),
@@ -120,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                  Get.to(const CateGoryListScreen());
+                  //Get.to(const ProductListScreen());
                 },
                 title: "Popular",
               ),
@@ -153,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                  Get.to(const CateGoryListScreen());
+                 // Get.to(const ProductListScreen());
                 },
                 title: "Special",
               ),
@@ -184,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                  Get.to(const CateGoryListScreen());
+                  //Get.to(const ProductListScreen());
                 },
                 title: "New",
               ),

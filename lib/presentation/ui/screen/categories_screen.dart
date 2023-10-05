@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/category_controller.dart';
 import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/product_list_screen.dart';
 import 'package:get/get.dart';
 import '../widgets/category_card.dart';
 
@@ -41,7 +42,12 @@ class CategoryScreen extends StatelessWidget {
                     mainAxisSpacing: 16,
                   ) ,
                   itemBuilder: (context, index){
-                     return  CategoryCard(categoryData: categoryController.categoryModel.data![index],);
+                     return  CategoryCard(
+                       categoryData: categoryController.categoryModel.data![index],
+                       onPress: (){
+                         Get.to(ProductListScreen(categoryId: categoryController.categoryModel.data![index].id!));
+                       },
+                     );
                   }
               );
             }

@@ -24,13 +24,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   int selectedSize = 0;
 
   double totalAmount = 0.0;
+  final ValueNotifier<int> _selectedValue = ValueNotifier(0);
+
 
   @override
   void initState() {
     super.initState();
-    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((_) {
      Get.find<ProductDetailController>().getProductDetails(widget.productId);
-    });
   }
 
   @override
@@ -44,9 +44,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
           List<Color> availableColors = getColorsFromString(productDetailController.productDetails.color ?? "");
 
-          if(totalAmount == 0) {
             totalAmount = double.parse(productDetailController.productDetails.product?.price.toString() ?? "");
-          }
 
           return SafeArea(
             child: Column(
@@ -95,9 +93,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                           value: 1,
                                           onChange: (newValue) {
 
-                                            totalAmount = double.parse(productDetailController.productDetails.product?.price ?? "0") * newValue;
-                                           print(totalAmount);
-
+                                           var total = _selectedValue.value = newValue; // Update the selected value
+                                            totalAmount = double.parse(productDetailController.productDetails.product?.price ?? "0") * total;
 
                                           }),
                                     ),
@@ -223,14 +220,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                 ),
 
-
                   PaymentCard(
                   title:"Price" ,
-                   totalCount: totalAmount.toString(),
+                   totalCount: "\$${totalAmount.toString()}",
                    buttonName: 'Add to cart',
-                   onTab: (){
-
-                   },
+                   onTab: (){},
                 ),
               ],
             ),
@@ -239,15 +233,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       ),
     );
   }
-
-
-  // int hexColor(String color){
-  //   String newColor = "0xff" + color;
-  //   newColor = newColor.replaceAll("#", "");
-  //   int finalColor = int.parse(newColor);
-  //   return finalColor;
-  // }
-
 
   List<Color> getColorsFromString(String colors) {
     List<Color> hexaColors = [];
