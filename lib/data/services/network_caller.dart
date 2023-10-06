@@ -38,7 +38,6 @@ class NetworkCaller {
 
   /// post Method
   Future<NetworkResponse> postRequest(String url, Map<String, dynamic> body,
-
       ) async {
     //{bool isLogin = false}
     try {
@@ -74,6 +73,7 @@ class NetworkCaller {
     return NetworkResponse(false, -1, null);
   }
 
+
   static Future<void> gotoLogin() async {
     await AuthController.clear();
     Navigator.pushAndRemoveUntil(
@@ -82,4 +82,5 @@ class NetworkCaller {
             (route) => false);
 
   }
+
 }

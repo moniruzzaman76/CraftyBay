@@ -230,35 +230,34 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
                   GetBuilder<AddToCardController>(
                     builder: (addToCardController) {
-                      return Visibility(
-                        visible: !addToCardController.addToCardInProgress,
-                        replacement: const Center(child: CircularProgressIndicator(),),
-                        child: PaymentCard(
-                        title:"Price" ,
-                         totalCount: "\$100",
-                         buttonName: 'Add to cart',
-                         onTab: (){
-                          addToCardController.addToCard(
-                              productDetailController.productDetails.id!,
-                            availableColors[selectedColor].toString(),
-                            availableSizes[selectedSize],
+                      // if(addToCardController.addToCardInProgress){
+                      //   const Center(child: CircularProgressIndicator(),);
+                      // }
+                      return PaymentCard(
+                      title:"Price" ,
+                       totalCount: "\$100",
+                       buttonName: 'Add to cart',
+                       onTab: (){
+                        addToCardController.addToCard(
+                            productDetailController.productDetails.id!,
+                          availableColors[selectedColor].toString(),
+                          availableSizes[selectedSize],
 
-                          ).then((result){
-                            if(result == true){
-                              Get.snackbar(
-                                  "Success", "Product Added to Card",
-                                backgroundColor: Colors.green,
-                              );
-                            }else{
-                              Get.snackbar(
-                                "failed", "Product Added to Card",
-                                backgroundColor: Colors.red,
-                              );
-                            }
-                          });
-                         },
-                ),
-                      );
+                        ).then((result){
+                          if(result == true){
+                            Get.snackbar(
+                                "Success", "Product Added to Card",
+                              backgroundColor: Colors.green,
+                            );
+                          }else{
+                            Get.snackbar(
+                              "failed", "Product Added to Card",
+                              backgroundColor: Colors.red,
+                            );
+                          }
+                        });
+                       },
+                );
                     }
                   ),
 
