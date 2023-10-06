@@ -15,6 +15,8 @@ class CardScreen extends StatefulWidget {
 }
 
 class _CardScreenState extends State<CardScreen> {
+
+
   
 
   @override
@@ -72,9 +74,7 @@ class _CardScreenState extends State<CardScreen> {
                                         ),),
                                         const Spacer(),
                                         IconButton(
-                                            onPressed: (){
-
-                                            },
+                                            onPressed: (){},
                                             icon: const Icon(
                                               Icons.delete_forever_rounded,
                                               color: Colors.red,
@@ -94,7 +94,6 @@ class _CardScreenState extends State<CardScreen> {
                                         const SizedBox(height: 12,),
                                         Row(
                                           children: [
-
                                             const Text("\$100",style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.w600,

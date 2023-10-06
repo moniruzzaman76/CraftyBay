@@ -4,12 +4,19 @@ import 'package:flutter_ecommerce/presentation/ui/screen/splash_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/app_colors.dart';
 import 'package:get/get.dart';
 
-class CraftyBay extends StatelessWidget {
+class CraftyBay extends StatefulWidget {
+  static GlobalKey<NavigatorState>globalKey = GlobalKey<NavigatorState>();
   const CraftyBay({Key? key}) : super(key: key);
+
+  @override
+  State<CraftyBay> createState() => _CraftyBayState();
+}
+class _CraftyBayState extends State<CraftyBay> {
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      key: CraftyBay.globalKey,
       debugShowCheckedModeBanner: false,
       initialBinding:StateHolderBinder(),
       theme: ThemeData(

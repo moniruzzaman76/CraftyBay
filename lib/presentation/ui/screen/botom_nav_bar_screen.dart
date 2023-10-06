@@ -31,8 +31,6 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
       Get.find<ProductPopularController>().getPopularProduct();
       Get.find<ProductSpecialController>().getSpecialProduct();
       Get.find<ProductNewController>().getNewProduct();
-
-
     });
   }
 

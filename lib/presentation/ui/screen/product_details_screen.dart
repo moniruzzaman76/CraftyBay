@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/add_to_card_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_details_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/review_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/home/product_image_slider.dart';
@@ -43,6 +44,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           }
 
           List<Color> availableColors = getColorsFromString(productDetailController.productDetails.color ?? "");
+          List<String> availableSizes = getSizesFromString(productDetailController.productDetails.size ?? "");
 
             totalAmount = double.parse(productDetailController.productDetails.product?.price.toString() ?? "");
 
@@ -95,7 +97,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
                                            var total = _selectedValue.value = newValue; // Update the selected value
                                             totalAmount = double.parse(productDetailController.productDetails.product?.price ?? "0") * total;
-
+                                            print(totalAmount);
                                           }),
                                     ),
                                   )
@@ -148,6 +150,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                         if(mounted){
                                           setState(() {});
                                         }
+
+                                        print(selectedColor);
+                                        print(availableColors[selectedColor].toString());
+
                                       },
                                       child: CircleAvatar(
                                         backgroundColor: availableColors[index],
@@ -171,7 +177,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 height: 28,
                                 child: ListView.separated(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: productDetailController.productDetails.size!.split(",").length,
+                                  itemCount: availableSizes.length,
                                   itemBuilder: (context,index){
 
                                     return  InkWell(
@@ -180,6 +186,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                         if(mounted){
                                           setState(() {});
                                         }
+                                        print(index);
+                                        print(availableSizes[index].toString());
                                       },
                                       child: Container(
                                           alignment: Alignment.center,
@@ -187,9 +195,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.grey),
                                             borderRadius: BorderRadius.circular(3),
-                                            color: selectedSize == index? AppColors.primaryColor:Colors.white,
+                                            color: selectedSize == index ? AppColors.primaryColor:Colors.white,
                                           ),
-                                          child: Text(productDetailController.productDetails.size!.split(",")[index],style: TextStyle(
+                                          child: Text(availableSizes[index],style: TextStyle(
                                             color: selectedSize == index? Colors.white:Colors.black,
                                           ),)
                                       ),
@@ -220,12 +228,40 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                 ),
 
-                  PaymentCard(
-                  title:"Price" ,
-                   totalCount: "\$${totalAmount.toString()}",
-                   buttonName: 'Add to cart',
-                   onTab: (){},
+                  GetBuilder<AddToCardController>(
+                    builder: (addToCardController) {
+                      return Visibility(
+                        visible: !addToCardController.addToCardInProgress,
+                        replacement: const Center(child: CircularProgressIndicator(),),
+                        child: PaymentCard(
+                        title:"Price" ,
+                         totalCount: "\$100",
+                         buttonName: 'Add to cart',
+                         onTab: (){
+                          addToCardController.addToCard(
+                              productDetailController.productDetails.id!,
+                            availableColors[selectedColor].toString(),
+                            availableSizes[selectedSize],
+
+                          ).then((result){
+                            if(result == true){
+                              Get.snackbar(
+                                  "Success", "Product Added to Card",
+                                backgroundColor: Colors.green,
+                              );
+                            }else{
+                              Get.snackbar(
+                                "failed", "Product Added to Card",
+                                backgroundColor: Colors.red,
+                              );
+                            }
+                          });
+                         },
                 ),
+                      );
+                    }
+                  ),
+
               ],
             ),
           );
@@ -234,6 +270,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 
+
+
   List<Color> getColorsFromString(String colors) {
     List<Color> hexaColors = [];
     final List<String> allColors = colors.split(",");
@@ -241,6 +279,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       hexaColors.add(HexColor(element));
     }
     return hexaColors;
+  }
+
+
+  List<String> getSizesFromString(String sizes) {
+    return sizes.split(",");
   }
 
 

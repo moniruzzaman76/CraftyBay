@@ -35,5 +35,10 @@ class ProductListController extends GetxController{
     }
   }
 
+  void setProduct(ProductRemarkModel productListModel){
+    _productListModel = productListModel;
+    update();
+  }
+
 
 }

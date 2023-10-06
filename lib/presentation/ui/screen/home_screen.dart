@@ -125,7 +125,9 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                  //Get.to(const ProductListScreen());
+                  Get.to( ProductListScreen(
+                    product: Get.find<ProductPopularController>().popularModel
+                  ));
                 },
                 title: "Popular",
               ),
@@ -158,7 +160,9 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                 // Get.to(const ProductListScreen());
+                  ProductListScreen(
+                    product: Get.find<ProductSpecialController>().specialModel
+                  );
                 },
                 title: "Special",
               ),
@@ -189,7 +193,9 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                  //Get.to(const ProductListScreen());
+                  ProductListScreen(
+                      product: Get.find<ProductNewController>().newModel
+                  );
                 },
                 title: "New",
               ),
