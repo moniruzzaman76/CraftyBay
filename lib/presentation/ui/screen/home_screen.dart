@@ -111,7 +111,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           return  CategoryCard(
                             categoryData: categoryController.categoryModel.data![index],
                             onPress: (){
-                              Get.to(ProductListScreen(categoryId: categoryController.categoryModel.data![index].id!));
+                              Get.to(ProductListScreen(categoryId: categoryController.categoryModel.data![index].id!,
+                              ));
                             },
                           );
                           },
@@ -125,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SectionHeader(
                 onTap: (){
                   Get.to( ProductListScreen(
+
                     product: Get.find<ProductPopularController>().popularModel
                   ));
                 },

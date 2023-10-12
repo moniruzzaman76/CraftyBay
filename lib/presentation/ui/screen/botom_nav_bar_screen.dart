@@ -4,7 +4,7 @@ import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_new_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_popular_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_special_controller.dart';
-import 'package:flutter_ecommerce/presentation/ui/screen/card_screen.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/card_list_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/home_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/wish_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/app_colors.dart';

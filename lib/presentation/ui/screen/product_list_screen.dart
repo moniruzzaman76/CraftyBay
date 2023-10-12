@@ -18,7 +18,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Get.find<ProductListController>().getProductByCategory(widget.categoryId!);
       if(widget.categoryId != null){
         Get.find<ProductListController>().getProductByCategory(widget.categoryId!);
       }
@@ -35,7 +34,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        title: const Text("Product List",style: TextStyle(
+        title: const Text("Product list",style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.w400,
         ),),

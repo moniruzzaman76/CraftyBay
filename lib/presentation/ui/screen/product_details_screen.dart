@@ -92,12 +92,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                           lowerLimit: 1,
                                           upperLimit: 10,
                                           stepValue: 1,
-                                          value: 1,
+                                          value: 2,
                                           onChange: (newValue) {
 
                                            var total = _selectedValue.value = newValue; // Update the selected value
                                             totalAmount = double.parse(productDetailController.productDetails.product?.price ?? "0") * total;
                                             print(totalAmount);
+
                                           }),
                                     ),
                                   )
@@ -235,7 +236,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       // }
                       return PaymentCard(
                       title:"Price" ,
-                       totalCount: "\$100",
+                       totalCount: "\$${totalAmount.toString()}",
                        buttonName: 'Add to cart',
                        onTab: (){
                         addToCardController.addToCard(

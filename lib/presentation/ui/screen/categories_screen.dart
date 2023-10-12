@@ -5,9 +5,14 @@ import 'package:flutter_ecommerce/presentation/ui/screen/product_list_screen.dar
 import 'package:get/get.dart';
 import '../widgets/category_card.dart';
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
   const CategoryScreen({Key? key}) : super(key: key);
 
+  @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -45,7 +50,9 @@ class CategoryScreen extends StatelessWidget {
                      return  CategoryCard(
                        categoryData: categoryController.categoryModel.data![index],
                        onPress: (){
-                         Get.to(ProductListScreen(categoryId: categoryController.categoryModel.data![index].id!));
+                         Get.to(
+                             ProductListScreen(categoryId: categoryController.categoryModel.data![index].id!,
+                         ));
                        },
                      );
                   }
