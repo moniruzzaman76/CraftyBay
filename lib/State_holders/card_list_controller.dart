@@ -9,8 +9,8 @@ class CardListController extends GetxController{
   bool _cardListInProgress = false;
   bool get cardListInProgress=> _cardListInProgress;
 
-  CartListModel _cartListModel = CartListModel();
-  CartListModel get cardListModel => _cartListModel;
+  WishAndCardListModel _cartListModel = WishAndCardListModel();
+  WishAndCardListModel get cardListModel => _cartListModel;
 
   String ? _message;
   String? get message => _message;
@@ -23,7 +23,7 @@ class CardListController extends GetxController{
     update();
 
     if(response.isSuccess){
-      _cartListModel = CartListModel.fromJson(response.responseJson!);
+      _cartListModel = WishAndCardListModel.fromJson(response.responseJson!);
       return true;
     }else{
       _message = "failed! get to Card list data";

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/State_holders/CreateWishListController.dart';
 import 'package:flutter_ecommerce/State_holders/category_controller.dart';
 import 'package:flutter_ecommerce/State_holders/home_sliders_controller.dart';
 import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
@@ -146,9 +145,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (BuildContext context, int index) {
                           return ProductCard(
                             remarkData: productPopularController.popularModel.data![index],
-                            onPress: (){
-                              Get.find<CreateWishListController>().createWishList("product_id");
-                            },
                           );
                         },
                       ),
@@ -181,7 +177,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (BuildContext context, int index) {
                            return  ProductCard(
                              remarkData: productSpecialController.specialModel.data![index],
-                             onPress: (){},
                            );
                         },
                       ),
@@ -214,7 +209,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (BuildContext context, int index) {
                            return  ProductCard(
                                remarkData: productNewController.newModel.data![index],
-                             onPress: (){},
                            );
                         },
                       ),

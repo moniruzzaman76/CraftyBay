@@ -4,11 +4,10 @@ import 'package:flutter_ecommerce/State_holders/product_delet_controller.dart';
 import 'package:get/get.dart';
 import '../../../data/model/card_list_model.dart';
 import '../utils/app_colors.dart';
-import '../utils/image_assets.dart';
 import 'custom_stepper.dart';
 
 class ProductAddToCard extends StatelessWidget {
-  final CartData cardData;
+  final CartAndWishData cardData;
   const ProductAddToCard({
     super.key, required this.cardData,
   });
@@ -29,7 +28,7 @@ class ProductAddToCard extends StatelessWidget {
                   flex: 1,
                   child: Image.network(cardData.product?.image ?? "",
                     errorBuilder:(context, object, stackTrace){
-                      return Image.asset(ImageAssets.productImage);
+                      return Image.network("https://w7.pngwing.com/pngs/820/94/png-transparent-shoe-nike-air-max-sneakers-running-running-shoes-orange-outdoor-shoe-converse-thumbnail.png");
                     },
                     fit: BoxFit.cover,
                   ),
@@ -39,7 +38,7 @@ class ProductAddToCard extends StatelessWidget {
                   child: ListTile(
                     title:  Row(
                       children: [
-                        Text(cardData.product?.title ?? "New Year Shoe",maxLines: 1,style: const TextStyle(
+                        Text(cardData.product?.title ?? "New Year Special Shoe",maxLines: 1,style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
                           fontSize: 18,

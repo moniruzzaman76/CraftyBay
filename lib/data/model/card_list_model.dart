@@ -1,18 +1,18 @@
 import 'product_details_model.dart';
 
-class CartListModel {
+class WishAndCardListModel {
   String? msg;
-  List<CartData>? data;
+  List<CartAndWishData>? data;
 
-  CartListModel({this.msg, this.data});
+  WishAndCardListModel({this.msg, this.data});
 
-  CartListModel.fromJson(Map<String, dynamic> json) {
+  WishAndCardListModel.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     if (json['data'] != null) {
       if (json['data'] is List) {
-        data = <CartData>[];
+        data = <CartAndWishData>[];
         json['data'].forEach((v) {
-          data?.add(CartData.fromJson(v));
+          data?.add(CartAndWishData.fromJson(v));
         });
       }
     }
@@ -28,7 +28,7 @@ class CartListModel {
   }
 }
 
-class CartData {
+class CartAndWishData {
   int? id;
   String? email;
   int? productId;
@@ -39,7 +39,7 @@ class CartData {
   Product? product;
   //int numberOfItems = 1;
 
-  CartData(
+  CartAndWishData(
       {this.id,
         this.email,
         this.productId,
@@ -49,7 +49,7 @@ class CartData {
         this.updatedAt,
         this.product});
 
-  CartData.fromJson(Map<String, dynamic> json) {
+  CartAndWishData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     email = json['email'];
     productId = json['product_id'];

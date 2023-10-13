@@ -7,10 +7,11 @@ import 'package:flutter_ecommerce/State_holders/product_popular_controller.dart'
 import 'package:flutter_ecommerce/State_holders/product_special_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/card_list_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/home_screen.dart';
-import 'package:flutter_ecommerce/presentation/ui/screen/wish_screen.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/wish_list_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/app_colors.dart';
 import 'package:get/get.dart';
 import '../../../State_holders/home_sliders_controller.dart';
+import '../../../State_holders/wish_list_controller.dart';
 import 'categories_screen.dart';
 
 class BottomNavBarScreen extends StatefulWidget {
@@ -33,6 +34,7 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
       await Get.find<ProductSpecialController>().getSpecialProduct();
       await Get.find<ProductNewController>().getNewProduct();
       await Get.find<CardListController>().getCardList();
+      await Get.find<WishListController>().getWishList();
     });
   }
 
@@ -41,7 +43,7 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
     const HomeScreen(),
     const CategoryScreen(),
     const CardScreen(),
-    const WishScreen(),
+    const WishListScreen(),
   ];
 
 

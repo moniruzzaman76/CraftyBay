@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/CreateWishListController.dart';
 import 'package:get/get.dart';
 import '../../../data/model/model_data/product_remark_model_data.dart';
 import '../screen/product_details_screen.dart';
@@ -6,9 +7,8 @@ import '../utils/app_colors.dart';
 
 class ProductCard extends StatelessWidget {
   final RemarkData remarkData;
-  final VoidCallback onPress;
   const ProductCard({
-    super.key, required this.remarkData, required this.onPress,
+    super.key, required this.remarkData,
   });
 
   @override
@@ -67,7 +67,23 @@ class ProductCard extends StatelessWidget {
                              ),),
                              const SizedBox(width: 12,),
                              InkWell(
-                               onTap:onPress,
+                               onTap:(){
+                                 Get.find<CreateWishListController>().createWishList(remarkData.id.toString()).then((result){
+                                   if(result == true){
+                                     Get.snackbar(
+                                       "Success", "add To Wish List Screen",
+                                       backgroundColor: Colors.green,
+                                       colorText: Colors.white,
+                                     );
+                                   }else{
+                                     Get.snackbar(
+                                       "failed!", "Please try Again",
+                                       backgroundColor: Colors.red,
+                                       colorText: Colors.white,
+                                     );
+                                   }
+                                 });
+                               },
                                child: const Card(
                                  color: AppColors.primaryColor,
                                  child: Icon(

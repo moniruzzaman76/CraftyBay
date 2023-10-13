@@ -9,8 +9,8 @@ class ProductDeleteController extends GetxController {
   bool _productDeleteInProgress = false;
   bool get productDeleteInProgress => _productDeleteInProgress;
 
-  CartListModel _cartListModel = CartListModel();
-  CartListModel get cardListModel => _cartListModel;
+  WishAndCardListModel _cartListModel = WishAndCardListModel();
+  WishAndCardListModel get cardListModel => _cartListModel;
 
   String _message = " ";
   String get message => _message;
@@ -23,7 +23,7 @@ class ProductDeleteController extends GetxController {
     _productDeleteInProgress = false;
      update();
     if (response.isSuccess) {
-      _cartListModel =  CartListModel.fromJson(response.responseJson!);
+      _cartListModel =  WishAndCardListModel.fromJson(response.responseJson!);
       update();
       return true;
     } else {

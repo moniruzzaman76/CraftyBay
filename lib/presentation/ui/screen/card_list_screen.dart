@@ -16,13 +16,6 @@ class CardScreen extends StatefulWidget {
 class _CardScreenState extends State<CardScreen> {
 
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //    Get.find<CardListController>().getCardList();
-  // }
-
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(

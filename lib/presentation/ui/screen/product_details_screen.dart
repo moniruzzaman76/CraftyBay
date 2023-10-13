@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/CreateWishListController.dart';
 import 'package:flutter_ecommerce/State_holders/create_add_to_card_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_details_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/review_screen.dart';
@@ -125,13 +126,37 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     ),),
                                   ),
                                   const SizedBox(width: 16,),
-                                  const Card(
-                                    color: AppColors.primaryColor,
-                                    child: Icon(
-                                      Icons.favorite_border_outlined,
-                                      color: Colors.white,
-                                      size: 23,
-                                    ),
+                                  GetBuilder<CreateWishListController>(
+                                    builder: (createWishListController) {
+                                      return InkWell(
+                                        onTap: (){
+                                         createWishListController.createWishList(
+                                             productDetailController.productDetails.id.toString()).then((result){
+                                               if(result == true){
+                                                 Get.snackbar(
+                                                   "Success", "add To Wish List Screen",
+                                                   backgroundColor: Colors.green,
+                                                   colorText: Colors.white,
+                                                 );
+                                               }else{
+                                                 Get.snackbar(
+                                                   "failed!", "Please try Again",
+                                                   backgroundColor: Colors.red,
+                                                   colorText: Colors.white,
+                                                 );
+                                               }
+                                         });
+                                        },
+                                        child: const Card(
+                                          color: AppColors.primaryColor,
+                                          child: Icon(
+                                            Icons.favorite_border_outlined,
+                                            color: Colors.white,
+                                            size: 23,
+                                          ),
+                                        ),
+                                      );
+                                    }
                                   ),
                                 ],
                               ),

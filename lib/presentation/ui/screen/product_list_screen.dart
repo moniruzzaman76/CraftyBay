@@ -75,9 +75,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 itemBuilder: (context, index){
                   return  ProductCard(
                       remarkData:productListController.productListModel.data![index],
-                    onPress: (){
-
-                    },
                   );
                 }
             );
