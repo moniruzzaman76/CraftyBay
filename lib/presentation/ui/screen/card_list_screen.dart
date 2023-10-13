@@ -16,6 +16,13 @@ class CardScreen extends StatefulWidget {
 class _CardScreenState extends State<CardScreen> {
 
 
+  // @override
+  // void initState() {
+  //   super.initState();
+  //    Get.find<CardListController>().getCardList();
+  // }
+
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -41,29 +48,37 @@ class _CardScreenState extends State<CardScreen> {
         body: Column(
           children: [
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GetBuilder<CardListController>(
-                    builder: (cardListController) {
-                      if(cardListController.cardListInProgress){
-                        return const Center(
-                          child: CircularProgressIndicator(),
+              child: RefreshIndicator(
+                onRefresh: ()async{
+                  await Get.find<CardListController>().getCardList();
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GetBuilder<CardListController>(
+                      builder: (cardListController) {
+                        if(cardListController.cardListInProgress){
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        if(cardListController.cardListModel.data == null || cardListController.cardListModel.data!.isEmpty){
+                          return const Center(child: Text("Empty Card List"),);
+                        }
+                        return Expanded(
+                          child: ListView.builder(
+                            itemCount: cardListController.cardListModel.data?.length ?? 0,
+                              itemBuilder: (context, int index){
+                              print(cardListController.cardListModel.data?.length);
+                                return ProductAddToCard(cardData: cardListController.cardListModel.data![index],);
+                              }
+                          ),
                         );
                       }
-                      return Expanded(
-                        child: ListView.builder(
-                          itemCount: cardListController.cardListModel.data?.length ?? 0,
-                            itemBuilder: (context, int index){
-                            print(cardListController.cardListModel.data?.length);
-                              return ProductAddToCard(cardData: cardListController.cardListModel.data![index],);
-                            }
-                        ),
-                      );
-                    }
-                  ),
+                    ),
 
-                ],
+                  ],
+                ),
               ),
             ),
             PaymentCard(

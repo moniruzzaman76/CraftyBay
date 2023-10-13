@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/card_list_controller.dart';
 import 'package:flutter_ecommerce/State_holders/category_controller.dart';
 import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_new_controller.dart';
@@ -31,6 +32,7 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
       await Get.find<ProductPopularController>().getPopularProduct();
       await Get.find<ProductSpecialController>().getSpecialProduct();
       await Get.find<ProductNewController>().getNewProduct();
+      await Get.find<CardListController>().getCardList();
     });
   }
 

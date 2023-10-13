@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/card_list_controller.dart';
+import 'package:flutter_ecommerce/State_holders/product_delet_controller.dart';
+import 'package:get/get.dart';
 import '../../../data/model/card_list_model.dart';
 import '../utils/app_colors.dart';
 import '../utils/image_assets.dart';
@@ -45,7 +48,8 @@ class ProductAddToCard extends StatelessWidget {
                         const Spacer(),
                         IconButton(
                             onPressed: (){
-
+                              Get.find<ProductDeleteController>().deleteAddToCardProduct(cardData.productId.toString());
+                              Get.find<CardListController>().getCardList();
                             },
                             icon: const Icon(
                               Icons.delete_forever_rounded,

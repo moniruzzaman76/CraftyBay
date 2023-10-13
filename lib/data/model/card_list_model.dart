@@ -9,10 +9,12 @@ class CartListModel {
   CartListModel.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     if (json['data'] != null) {
-      data = <CartData>[];
-      json['data'].forEach((v) {
-        data!.add(CartData.fromJson(v));
-      });
+      if (json['data'] is List) {
+        data = <CartData>[];
+        json['data'].forEach((v) {
+          data?.add(CartData.fromJson(v));
+        });
+      }
     }
   }
 
@@ -35,7 +37,7 @@ class CartData {
   String? createdAt;
   String? updatedAt;
   Product? product;
-  int numberOfItems = 1;
+  //int numberOfItems = 1;
 
   CartData(
       {this.id,

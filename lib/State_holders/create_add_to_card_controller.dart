@@ -3,7 +3,7 @@ import 'package:flutter_ecommerce/data/services/network_caller.dart';
 import 'package:get/get.dart';
 import '../data/utils/urls.dart';
 
-class AddToCardController extends GetxController{
+class CreateAddToCardController extends GetxController{
   
   bool _addToCardInProgress = false;
   bool get addToCardInProgress => _addToCardInProgress;
@@ -17,7 +17,7 @@ class AddToCardController extends GetxController{
     _addToCardInProgress = true;
     update();
 
-    final NetworkResponse response = await NetworkCaller().postRequest(Urls.addToCard,<String,dynamic> {
+    final NetworkResponse response = await NetworkCaller().postRequest(Urls.createAddToCard,<String,dynamic> {
       "product_id":productId.toString(),
       "color":color,
       "size":size

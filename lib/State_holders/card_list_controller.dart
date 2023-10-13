@@ -23,7 +23,7 @@ class CardListController extends GetxController{
     update();
 
     if(response.isSuccess){
-      _cartListModel = CartListModel.fromJson(response.responseJson ?? {});
+      _cartListModel = CartListModel.fromJson(response.responseJson!);
       return true;
     }else{
       _message = "failed! get to Card list data";

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/State_holders/add_to_card_controller.dart';
+import 'package:flutter_ecommerce/State_holders/create_add_to_card_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_details_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/review_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/home/product_image_slider.dart';
@@ -229,7 +229,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                 ),
 
-                  GetBuilder<AddToCardController>(
+                  GetBuilder<CreateAddToCardController>(
                     builder: (addToCardController) {
                       // if(addToCardController.addToCardInProgress){
                       //   const Center(child: CircularProgressIndicator(),);
