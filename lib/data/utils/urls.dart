@@ -7,7 +7,6 @@ class Urls {
   static String getHomeSliders = '$_baseUrl/ListProductSlider';
   static String categoryProduct = '$_baseUrl/CategoryList';
   static String getProductByCategory(int id) => '$_baseUrl/ListProductByCategory/$id';
-
   static String getProductByRemark(String remark) => '$_baseUrl/ListProductByRemark/$remark';
   static String createWishList(String id) => '$_baseUrl/CreateWishList/$id';
   static String productDetails(int id) => '$_baseUrl/ProductDetailsById/$id';
@@ -15,5 +14,6 @@ class Urls {
   static String cardList = '$_baseUrl/CartList';
   static String deleteAddToCard(String id) => '$_baseUrl/DeleteCartList/$id';
   static String productWishList = '$_baseUrl/ProductWishList';
+  static String createReview = '$_baseUrl/CreateProductReview';
 
 }

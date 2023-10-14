@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 import '../utils/app_colors.dart';
 
 class ReviewScreen extends StatefulWidget {
-  const ReviewScreen({Key? key}) : super(key: key);
+  final int productId;
+  const ReviewScreen({Key? key, required this.productId}) : super(key: key);
 
   @override
   State<ReviewScreen> createState() => _ReviewScreenState();
@@ -95,7 +96,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                    mini: true,
                    backgroundColor: AppColors.primaryColor,
                      onPressed: (){
-                     Get.to(const CreateReviewScreen());
+                     Get.to( CreateReviewScreen(productId: widget.productId.toString(),));
                      },
                    child: const Icon(Icons.add),
                  ),

@@ -117,7 +117,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   const SizedBox(width: 16,),
                                   TextButton(
                                     onPressed: (){
-                                      Get.to(const ReviewScreen());
+                                      Get.to( ReviewScreen(productId: productDetailController.productDetails.id ?? 0,));
                                     },
                                     child: const Text("Review",style: TextStyle(
                                       fontSize: 18,

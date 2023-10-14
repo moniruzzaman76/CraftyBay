@@ -11,6 +11,7 @@ import 'package:flutter_ecommerce/State_holders/product_new_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_popular_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_special_controller.dart';
 import 'package:get/get.dart';
+import '../State_holders/create_review_controller.dart';
 import '../State_holders/email_verification_controller.dart';
 import '../State_holders/main_botom_nav_controller.dart';
 import '../State_holders/wish_list_controller.dart';
@@ -33,6 +34,6 @@ class StateHolderBinder extends Bindings{
     Get.put(CardListController());
     Get.put(ProductDeleteController());
     Get.put(WishListController());
-
+    Get.put(CreateReviewController());
   }
 }
