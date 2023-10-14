@@ -50,7 +50,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                      return  CategoryCard(
                        categoryData: categoryController.categoryModel.data![index],
                        onPress: (){
-                         Get.to(
+                         Get.to(()=>
                              ProductListScreen(categoryId: categoryController.categoryModel.data![index].id!,
                          ));
                        },

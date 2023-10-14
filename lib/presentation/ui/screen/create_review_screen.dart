@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/create_review_controller.dart';
+import 'package:flutter_ecommerce/State_holders/review_list_controller.dart';
 import 'package:get/get.dart';
 
 
 class CreateReviewScreen extends StatefulWidget {
-  final String productId;
+  final int productId;
   const CreateReviewScreen({Key? key, required this.productId}) : super(key: key);
 
   @override
@@ -12,12 +13,13 @@ class CreateReviewScreen extends StatefulWidget {
 }
 
 class _CreateReviewScreenState extends State<CreateReviewScreen> {
-
   TextEditingController firstNameEditingController = TextEditingController();
-  TextEditingController lastNameEditingController = TextEditingController();
-  TextEditingController reviewEditingController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
 
+  TextEditingController lastNameEditingController = TextEditingController();
+
+  TextEditingController reviewEditingController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -96,15 +98,15 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                               onPressed: (){
                                 if (_formKey.currentState!.validate()){
                                   createReviewController.createReview(
+                                    reviewEditingController.text.trim(),
                                       widget.productId,
-                                      firstNameEditingController.text,
-                                      lastNameEditingController.text,
-                                      reviewEditingController.text
                                   ).then((result) {
                                     if(result == true){
                                       firstNameEditingController.clear();
                                     lastNameEditingController.clear();
                                     reviewEditingController.clear();
+
+                                    Get.find<ProductReviewController>().getProductReview(widget.productId);
 
                                       Get.snackbar(
                                         'Thank you for your feedback!',

@@ -9,8 +9,8 @@ class ProductPopularController extends GetxController{
   bool _productPopularInProgress = false;
   bool get productRemarkModelInProgress => _productPopularInProgress;
 
-  ProductRemarkModel _popularModel = ProductRemarkModel();
-  ProductRemarkModel get popularModel=> _popularModel;
+  ProductReviewModel _popularModel = ProductReviewModel();
+  ProductReviewModel get popularModel=> _popularModel;
 
   String _message = " ";
   String get message =>_message;
@@ -25,7 +25,7 @@ class ProductPopularController extends GetxController{
     update();
 
     if(response.isSuccess){
-      _popularModel = ProductRemarkModel.fromJson(response.responseJson ?? {});
+      _popularModel = ProductReviewModel.fromJson(response.responseJson ?? {});
       return true;
     }else{
       _productPopularInProgress = false;

@@ -14,6 +14,7 @@ import 'package:get/get.dart';
 import '../State_holders/create_review_controller.dart';
 import '../State_holders/email_verification_controller.dart';
 import '../State_holders/main_botom_nav_controller.dart';
+import '../State_holders/review_list_controller.dart';
 import '../State_holders/wish_list_controller.dart';
 
 class StateHolderBinder extends Bindings{
@@ -35,5 +36,6 @@ class StateHolderBinder extends Bindings{
     Get.put(ProductDeleteController());
     Get.put(WishListController());
     Get.put(CreateReviewController());
+    Get.put(ProductReviewController());
   }
 }

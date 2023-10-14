@@ -45,9 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(width: 10,),
           CircularIconButton(
-            onPress: (){
-
-            },
+            onPress: (){},
             icon: Icons.notifications_outlined,
           ),
           const SizedBox(width: 10,),
@@ -110,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           return  CategoryCard(
                             categoryData: categoryController.categoryModel.data![index],
                             onPress: (){
-                              Get.to(ProductListScreen(categoryId: categoryController.categoryModel.data![index].id!,
+                              Get.to(()=>ProductListScreen(categoryId: categoryController.categoryModel.data![index].id!,
                               ));
                             },
                           );
@@ -124,9 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                  Get.to( ProductListScreen(
-
-                    product: Get.find<ProductPopularController>().popularModel
+                  Get.to(()=> ProductListScreen(product: Get.find<ProductPopularController>().popularModel
                   ));
                 },
                 title: "Popular",

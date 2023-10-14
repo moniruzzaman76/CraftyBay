@@ -9,8 +9,8 @@ class ProductSpecialController extends GetxController{
   bool _productSpecialInProgress = false;
   bool get productSpecialInProgress => _productSpecialInProgress;
 
-  ProductRemarkModel _specialModel = ProductRemarkModel();
-  ProductRemarkModel get specialModel=> _specialModel;
+  ProductReviewModel _specialModel = ProductReviewModel();
+  ProductReviewModel get specialModel=> _specialModel;
 
   String _message = " ";
   String get message =>_message;
@@ -25,7 +25,7 @@ class ProductSpecialController extends GetxController{
     update();
 
     if(response.isSuccess){
-      _specialModel = ProductRemarkModel.fromJson(response.responseJson ?? {});
+      _specialModel = ProductReviewModel.fromJson(response.responseJson ?? {});
       return true;
     }else{
       _productSpecialInProgress = false;

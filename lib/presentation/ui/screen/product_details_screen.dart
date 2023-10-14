@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/CreateWishListController.dart';
 import 'package:flutter_ecommerce/State_holders/create_add_to_card_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_details_controller.dart';
-import 'package:flutter_ecommerce/presentation/ui/screen/review_screen.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/product_review_list_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/home/product_image_slider.dart';
 import 'package:get/get.dart';
 import '../utils/app_colors.dart';
@@ -117,7 +117,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   const SizedBox(width: 16,),
                                   TextButton(
                                     onPressed: (){
-                                      Get.to( ReviewScreen(productId: productDetailController.productDetails.id ?? 0,));
+                                      Get.to(()=> ProductReviewListScreen(productId: productDetailController.productDetails.productId ?? 0,));
                                     },
                                     child: const Text("Review",style: TextStyle(
                                       fontSize: 18,

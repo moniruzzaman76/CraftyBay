@@ -9,8 +9,8 @@ class ProductListController extends GetxController{
   bool _productCategoryInProgress = false;
   bool get productNewInProgress => _productCategoryInProgress;
 
-  ProductRemarkModel _productListModel = ProductRemarkModel();
-  ProductRemarkModel get productListModel=> _productListModel;
+  ProductReviewModel _productListModel = ProductReviewModel();
+  ProductReviewModel get productListModel=> _productListModel;
 
   String _message = " ";
   String get message =>_message;
@@ -25,7 +25,7 @@ class ProductListController extends GetxController{
     update();
 
     if(response.isSuccess){
-      _productListModel = ProductRemarkModel.fromJson(response.responseJson ?? {});
+      _productListModel = ProductReviewModel.fromJson(response.responseJson ?? {});
       return true;
     }else{
       _productCategoryInProgress = false;
@@ -35,7 +35,7 @@ class ProductListController extends GetxController{
     }
   }
 
-  void setProduct(ProductRemarkModel productListModel){
+  void setProduct(ProductReviewModel productListModel){
     _productListModel = productListModel;
     update();
   }

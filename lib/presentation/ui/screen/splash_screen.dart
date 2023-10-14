@@ -45,7 +45,8 @@ class _SplashScreenState extends State<SplashScreen> {
           const CircularProgressIndicator(),
           const SizedBox(height: 20,),
           const Text("Version 1.0.0"),
-          const SizedBox(height: 20,)
+          const SizedBox(height: 20,),
+          const Text("Developed by Monir"),
 
         ],
       ),

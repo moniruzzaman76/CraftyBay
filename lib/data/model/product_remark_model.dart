@@ -1,12 +1,12 @@
 import 'model_data/product_remark_model_data.dart';
 
-class ProductRemarkModel {
+class ProductReviewModel {
   String? msg;
   List<RemarkData>? data;
 
-  ProductRemarkModel({this.msg, this.data});
+  ProductReviewModel({this.msg, this.data});
 
-  ProductRemarkModel.fromJson(Map<String, dynamic> json) {
+  ProductReviewModel.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     if (json['data'] != null) {
       data = <RemarkData>[];

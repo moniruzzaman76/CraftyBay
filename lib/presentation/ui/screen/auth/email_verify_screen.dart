@@ -30,6 +30,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  const SizedBox(height: 60,),
                   Center(child: SvgPicture.asset(ImageAssets.splashLogo,width: 100,)),
                    const SizedBox(height: 20,),
                    Text("Welcome Back",style: Theme.of(context).textTheme.titleLarge?.copyWith(

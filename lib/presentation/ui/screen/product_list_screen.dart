@@ -6,7 +6,7 @@ import '../widgets/product_card.dart';
 
 class ProductListScreen extends StatefulWidget {
   final int ? categoryId;
-  final ProductRemarkModel ? product;
+  final ProductReviewModel ? product;
   const ProductListScreen({Key? key, this.categoryId, this.product}) : super(key: key);
 
   @override
