@@ -4,8 +4,6 @@ import 'package:flutter_ecommerce/presentation/ui/screen/botom_nav_bar_screen.da
 import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class ProfileCompleteScreen extends StatefulWidget {
   const ProfileCompleteScreen({Key? key}) : super(key: key);
@@ -120,7 +118,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
 
                   const SizedBox(height: 16,),
 
-                  GetBuilder<CompleteProfileController>(
+                  GetBuilder<CreateProfileController>(
                     builder: (completeProfileController) {
                       return Visibility(
                         visible: !completeProfileController.createProfileInProgress,
@@ -144,12 +142,12 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                                           mobileEditingController.clear();
                                           cityEditingController.clear();
                                           shippingAddressEditingController.clear();
-
                                           Get.snackbar(
                                               "Success!", "Profile Completed has been done",
                                               backgroundColor: Colors.green,
                                               colorText: Colors.white
                                           );
+                                          Get.offAll(()=>const BottomNavBarScreen());
                                         }else{
                                           Get.snackbar(
                                               "Failed!", "Please try again",

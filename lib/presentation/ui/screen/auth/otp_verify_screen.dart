@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/otp_verify_controller.dart';
-import 'package:flutter_ecommerce/presentation/ui/screen/auth/profile_complete_screen.dart';
+import 'package:flutter_ecommerce/State_holders/read_profile_controller.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/auth/create_profile_screen.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/botom_nav_bar_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -93,11 +95,16 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
                           replacement: const Center(child: CircularProgressIndicator(),),
                           child: ElevatedButton(
                               onPressed: (){
-
                                 if (_formKey.currentState!.validate()){
-                                  otpVerifyController.otpVerify(widget.email, otpEditingController.text).then((result){
+                                  otpVerifyController.otpVerify(widget.email, otpEditingController.text).then((result)async{
                                     if(result == true){
-                                      Get.to(()=> const ProfileCompleteScreen());
+                                      await Future.delayed(const Duration(seconds: 3)).then((value)async {
+                                        return Get.find<ReadProfileController>().readProfile();
+                                      });
+
+                                      Get.find<ReadProfileController>().readProfileModel.data!.length == 1 ?
+                                      Get.offAll(()=>const BottomNavBarScreen()):Get.offAll(()=>const ProfileCompleteScreen());
+
                                     }else{
                                       Get.snackbar(
                                           "failed", "Email verify failed!.try again",

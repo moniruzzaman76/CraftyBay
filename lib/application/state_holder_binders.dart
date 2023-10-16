@@ -10,6 +10,7 @@ import 'package:flutter_ecommerce/State_holders/category_product_list_controller
 import 'package:flutter_ecommerce/State_holders/product_new_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_popular_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_special_controller.dart';
+import 'package:flutter_ecommerce/State_holders/read_profile_controller.dart';
 import 'package:get/get.dart';
 import '../State_holders/complete_profile_controller.dart';
 import '../State_holders/create_review_controller.dart';
@@ -38,6 +39,7 @@ class StateHolderBinder extends Bindings{
     Get.put(WishListController());
     Get.put(CreateReviewController());
     Get.put(ProductReviewController());
-    Get.put(CompleteProfileController());
+    Get.put(CreateProfileController());
+    Get.put(ReadProfileController());
   }
 }

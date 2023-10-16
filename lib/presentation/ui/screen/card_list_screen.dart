@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/auth_controller.dart';
 import 'package:flutter_ecommerce/State_holders/card_list_controller.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/auth/email_verify_screen.dart';
 import 'package:get/get.dart';
 import '../../../State_holders/main_botom_nav_controller.dart';
 import '../widgets/add_to_card_list.dart';
@@ -15,6 +17,18 @@ class CardScreen extends StatefulWidget {
 
 class _CardScreenState extends State<CardScreen> {
 
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
+      if(AuthController.isLoggedIn){
+        await Get.find<CardListController>().getCardList();
+      }else{
+       Get.to(()=> const EmailVerificationScreen());
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

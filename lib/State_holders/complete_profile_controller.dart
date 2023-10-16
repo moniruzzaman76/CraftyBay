@@ -3,7 +3,8 @@ import '../data/model/network_response.dart';
 import '../data/services/network_caller.dart';
 import '../data/utils/urls.dart';
 
-class CompleteProfileController extends GetxController{
+class CreateProfileController extends GetxController{
+
   bool _createProfileInProgress = false;
   bool get createProfileInProgress => _createProfileInProgress;
 

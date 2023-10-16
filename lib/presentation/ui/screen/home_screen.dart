@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/auth_controller.dart';
 import 'package:flutter_ecommerce/State_holders/category_controller.dart';
 import 'package:flutter_ecommerce/State_holders/home_sliders_controller.dart';
 import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
@@ -46,7 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(width: 10,),
           CircularIconButton(
-            onPress: (){},
+            onPress: (){
+              AuthController.clear();
+            },
             icon: Icons.notifications_outlined,
           ),
           const SizedBox(width: 10,),
