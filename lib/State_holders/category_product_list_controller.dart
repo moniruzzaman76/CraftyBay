@@ -4,10 +4,10 @@ import '../data/model/product_remark_model.dart';
 import '../data/services/network_caller.dart';
 import '../data/utils/urls.dart';
 
-class ProductListController extends GetxController{
+class CategoryProductListController extends GetxController{
 
   bool _productCategoryInProgress = false;
-  bool get productNewInProgress => _productCategoryInProgress;
+  bool get productCategoryInProgress => _productCategoryInProgress;
 
   ProductReviewModel _productListModel = ProductReviewModel();
   ProductReviewModel get productListModel=> _productListModel;
@@ -15,7 +15,7 @@ class ProductListController extends GetxController{
   String _message = " ";
   String get message =>_message;
 
-  Future<bool>getProductByCategory(int categoryId)async{
+  Future<bool>getProductByCategoryList(int categoryId)async{
     _productCategoryInProgress = true;
     update();
 
@@ -33,11 +33,6 @@ class ProductListController extends GetxController{
       _message = "failed! get to product new data";
       return false;
     }
-  }
-
-  void setProduct(ProductReviewModel productListModel){
-    _productListModel = productListModel;
-    update();
   }
 
 

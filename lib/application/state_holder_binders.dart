@@ -6,11 +6,12 @@ import 'package:flutter_ecommerce/State_holders/home_sliders_controller.dart';
 import 'package:flutter_ecommerce/State_holders/otp_verify_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_delet_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_details_controller.dart';
-import 'package:flutter_ecommerce/State_holders/product_list_controller.dart';
+import 'package:flutter_ecommerce/State_holders/category_product_list_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_new_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_popular_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_special_controller.dart';
 import 'package:get/get.dart';
+import '../State_holders/complete_profile_controller.dart';
 import '../State_holders/create_review_controller.dart';
 import '../State_holders/email_verification_controller.dart';
 import '../State_holders/main_botom_nav_controller.dart';
@@ -30,12 +31,13 @@ class StateHolderBinder extends Bindings{
     Get.put(ProductNewController());
     Get.put(CreateWishListController());
     Get.put(ProductDetailController());
-    Get.put(ProductListController());
+    Get.put(CategoryProductListController());
     Get.put(CreateAddToCardController());
     Get.put(CardListController());
     Get.put(ProductDeleteController());
     Get.put(WishListController());
     Get.put(CreateReviewController());
     Get.put(ProductReviewController());
+    Get.put(CompleteProfileController());
   }
 }

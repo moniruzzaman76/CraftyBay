@@ -1,33 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/State_holders/product_list_controller.dart';
-import 'package:flutter_ecommerce/data/model/product_remark_model.dart';
 import 'package:get/get.dart';
+import '../../../data/model/model_data/product_remark_model_data.dart';
 import '../widgets/product_card.dart';
 
-class ProductListScreen extends StatefulWidget {
+class ProductListScreen extends StatelessWidget {
   final int ? categoryId;
-  final ProductReviewModel ? product;
-  const ProductListScreen({Key? key, this.categoryId, this.product}) : super(key: key);
+  final List<RemarkData> remarkData;
+  const ProductListScreen({Key? key, this.categoryId, required this.remarkData, }) : super(key: key);
 
-  @override
-  State<ProductListScreen> createState() => _ProductListScreenState();
-}
-class _ProductListScreenState extends State<ProductListScreen> {
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if(widget.categoryId != null){
-        Get.find<ProductListController>().getProductByCategory(widget.categoryId!);
-      }
-      else if(widget.product != null){
-        Get.find<ProductListController>().setProduct(widget.product!);
-      }
-    });
-  }
-
-
+  // @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,39 +28,22 @@ class _ProductListScreenState extends State<ProductListScreen> {
          size: 22,
        ),),
       ),
-      body:Padding(
+      body: remarkData.isEmpty ? const Center(child: Text("No Product Available"),):Padding(
         padding: const EdgeInsets.all(8.0),
-        child: GetBuilder<ProductListController>(
-          builder: (productListController) {
-
-            if(productListController.productNewInProgress){
-              return const Center(child: CircularProgressIndicator());
+        child: GridView.builder(
+            itemCount: remarkData.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisSpacing: 8,
+                childAspectRatio: 7/8
+            ) ,
+            itemBuilder: (context, index){
+              return  ProductCard(
+                remarkData:remarkData[index],
+              );
             }
-
-            if(productListController.productListModel.data?.isEmpty ?? true){
-              return  const Center(child: Text("Empty Product"));
-            }
-
-            //alternative process
-            // if((productListController.productListModel.data?.length ?? 0) == 0){
-            //   return  const Center(child: Text("Empty Product"));
-            // }
-
-            return GridView.builder(
-                itemCount: productListController.productListModel.data?.length ?? 0,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 8,
-                  childAspectRatio: 7/8
-                ) ,
-                itemBuilder: (context, index){
-                  return  ProductCard(
-                      remarkData:productListController.productListModel.data![index],
-                  );
-                }
-            );
-          }
         ),
+
       )
     );
   }

@@ -15,7 +15,7 @@ class WishListProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Get.to(()=>ProductDetailsScreen(productId: wishData.id!,));
+        Get.to(()=>ProductDetailsScreen(productId: wishData.productId ?? 0,));
       },
       child: Card(
         elevation: 3,

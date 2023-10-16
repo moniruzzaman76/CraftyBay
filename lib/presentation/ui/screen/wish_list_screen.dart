@@ -40,7 +40,7 @@ class _WishListScreenState extends State<WishListScreen> {
               if(wishListController.wishListInProgress){
                 return const Center(child: CircularProgressIndicator(),);
               }
-              if(wishListController.wishListModel.data!.isEmpty){
+              if(wishListController.wishListModel.data == null ||wishListController.wishListModel.data!.isEmpty){
                 return const Center(child:Text("Empty Wish List Product"),);
               }
 

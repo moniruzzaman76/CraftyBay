@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter_ecommerce/data/model/model_data/product_details_data.dart';
 import 'package:flutter_ecommerce/data/model/network_response.dart';
 import 'package:flutter_ecommerce/data/model/product_details_model.dart';
@@ -7,7 +5,6 @@ import 'package:flutter_ecommerce/data/services/network_caller.dart';
 import 'package:flutter_ecommerce/data/utils/urls.dart';
 import 'package:get/get.dart';
 
-import '../presentation/ui/utils/color_extension.dart';
 class ProductDetailController extends GetxController{
   
   bool _productDetailsInProgress = false;
@@ -38,21 +35,6 @@ class ProductDetailController extends GetxController{
       _message = "get failed Product Details data";
       return false;
     }
-  }
-
-
-  List<Color> getColorsFromString(String colors) {
-    List<Color> hexaColors = [];
-    final List<String> allColors = colors.split(",");
-    for (var element in allColors) {
-      hexaColors.add(HexColor(element));
-    }
-    return hexaColors;
-  }
-
-
-  List<String> getSizesFromString(String sizes) {
-    return sizes.split(",");
   }
 
   

@@ -5,6 +5,7 @@ import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_new_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_popular_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_special_controller.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/auth/category_product_list_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/product_list_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/category_card.dart';
@@ -108,7 +109,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           return  CategoryCard(
                             categoryData: categoryController.categoryModel.data![index],
                             onPress: (){
-                              Get.to(()=>ProductListScreen(categoryId: categoryController.categoryModel.data![index].id!,
+                              Get.to(()=>CategoryProductListScreen(
+                                categoryId: categoryController.categoryModel.data![index].id!,
                               ));
                             },
                           );
@@ -122,8 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                  Get.to(()=> ProductListScreen(product: Get.find<ProductPopularController>().popularModel
-                  ));
+                  Get.to(()=> ProductListScreen(remarkData: Get.find<ProductPopularController>().popularModel.data ?? []));
                 },
                 title: "Popular",
               ),
@@ -153,9 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                  ProductListScreen(
-                    product: Get.find<ProductSpecialController>().specialModel
-                  );
+                  Get.to(()=>ProductListScreen(remarkData: Get.find<ProductSpecialController>().specialModel.data ?? [],));
                 },
                 title: "Special",
               ),
@@ -185,9 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 12,),
               SectionHeader(
                 onTap: (){
-                  ProductListScreen(
-                      product: Get.find<ProductNewController>().newModel
-                  );
+                  Get.to(()=>ProductListScreen(remarkData: Get.find<ProductNewController>().newModel.data ?? [],));
                 },
                 title: "New",
               ),

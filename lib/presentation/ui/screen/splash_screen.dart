@@ -18,8 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    goToNextScreen();
-
+     goToNextScreen();
   }
 
   Future<void> goToNextScreen()async{
@@ -45,8 +44,9 @@ class _SplashScreenState extends State<SplashScreen> {
           const CircularProgressIndicator(),
           const SizedBox(height: 20,),
           const Text("Version 1.0.0"),
-          const SizedBox(height: 20,),
+          const SizedBox(height: 15,),
           const Text("Developed by Monir"),
+          const SizedBox(height: 15,),
 
         ],
       ),

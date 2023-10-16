@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/complete_profile_controller.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/botom_nav_bar_screen.dart';
 import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class ProfileCompleteScreen extends StatefulWidget {
   const ProfileCompleteScreen({Key? key}) : super(key: key);
@@ -115,17 +120,52 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
 
                   const SizedBox(height: 16,),
 
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                        onPressed: (){
-                          if (_formKey.currentState!.validate()){
+                  GetBuilder<CompleteProfileController>(
+                    builder: (completeProfileController) {
+                      return Visibility(
+                        visible: !completeProfileController.createProfileInProgress,
+                        replacement: const Center(child: CircularProgressIndicator(),),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                              onPressed: (){
+                                if (_formKey.currentState!.validate()){
+                                  completeProfileController.createProfile(
 
-                          }
+                                      firstNameEditingController.text.trim(),
+                                      lastNameEditingController.text.trim(),
+                                      mobileEditingController.text.trim(),
+                                      cityEditingController.text.trim(),
+                                      shippingAddressEditingController.text.trim()).then((result){
+                                        if(result == true){
+                                          Get.to(()=> const BottomNavBarScreen());
+                                          firstNameEditingController.clear();
+                                          lastNameEditingController.clear();
+                                          mobileEditingController.clear();
+                                          cityEditingController.clear();
+                                          shippingAddressEditingController.clear();
 
-                    }, child: const Text(
-                    "Complete"
-                    )),
+                                          Get.snackbar(
+                                              "Success!", "Profile Completed has been done",
+                                              backgroundColor: Colors.green,
+                                              colorText: Colors.white
+                                          );
+                                        }else{
+                                          Get.snackbar(
+                                              "Failed!", "Please try again",
+                                              backgroundColor: Colors.red,
+                                              colorText: Colors.white
+                                          );
+                                        }
+                                  });
+
+                                }
+                          }, child: const Text(
+                          "Complete"
+                          )),
+                        ),
+                      );
+                    }
                   )
                 ],
               ),
