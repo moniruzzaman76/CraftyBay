@@ -94,7 +94,10 @@ class _CardScreenState extends State<CardScreen> {
               titleFontSize: 12,
               totalCount: '\$100.000',
               buttonName: 'check out',
-              onTab: (){},
+             child: ElevatedButton(
+               onPressed: (){},
+               child: const Text("Add To Card"),
+             ),
             ),
           ],
         )

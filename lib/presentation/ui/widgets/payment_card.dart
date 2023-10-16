@@ -3,7 +3,7 @@ import '../utils/app_colors.dart';
 
 class PaymentCard extends StatelessWidget {
   const PaymentCard({
-    super.key, this.padding, required this.title, required this.totalCount, required this.buttonName, this.titleFontSize, required this.onTab,
+    super.key, this.padding, required this.title, required this.totalCount, required this.buttonName, this.titleFontSize, required this.child,
   });
 
   final EdgeInsetsGeometry? padding;
@@ -11,7 +11,8 @@ class PaymentCard extends StatelessWidget {
   final String totalCount;
   final String  buttonName;
   final double? titleFontSize;
-  final VoidCallback onTab;
+  //final VoidCallback onTab;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +46,10 @@ class PaymentCard extends StatelessWidget {
           ),
           SizedBox(
             width: 120,
-            child: ElevatedButton(
-              onPressed: onTab, child: Text(buttonName),),)
+            child: child,
+            // child: ElevatedButton(
+            //   onPressed: onTab, child: Text(buttonName),),
+          )
         ],
       ),
     );
