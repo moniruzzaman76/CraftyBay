@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/category_controller.dart';
 import 'package:flutter_ecommerce/State_holders/main_botom_nav_controller.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/category_product_list_screen.dart';
 import 'package:get/get.dart';
 import '../widgets/category_card.dart';
 
@@ -49,8 +50,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                      return  CategoryCard(
                        categoryData: categoryController.categoryModel.data![index],
                        onPress: (){
-                         // Get.to(()=> ProductListScreen(categoryId: categoryController.categoryModel.data![index].id!,
-                         // ));
+                         Get.to(()=> CategoryProductListScreen(categoryId: categoryController.categoryModel.data![index].id!,
+                           productName: categoryController.categoryModel.data![index].categoryName ?? "Product List",
+                         ));
                        },
                      );
                   }

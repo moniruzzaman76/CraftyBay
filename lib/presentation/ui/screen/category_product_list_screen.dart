@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/category_product_list_controller.dart';
 import 'package:flutter_ecommerce/data/model/model_data/product_remark_model_data.dart';
 import 'package:get/get.dart';
-import '../../widgets/product_card.dart';
+import '../widgets/product_card.dart';
 
 class CategoryProductListScreen extends StatefulWidget {
   final int categoryId;
+  final String productName;
 
-  const CategoryProductListScreen({Key? key, required this.categoryId,}) : super(key: key);
+  const CategoryProductListScreen({Key? key, required this.categoryId, required this.productName,}) : super(key: key);
 
   @override
   State<CategoryProductListScreen> createState() => _CategoryProductListScreenState();
@@ -28,7 +29,7 @@ class _CategoryProductListScreenState extends State<CategoryProductListScreen> {
         appBar: AppBar(
           elevation: 1,
           backgroundColor: Colors.white,
-          title: const Text("Product list",style: TextStyle(
+          title:  Text(widget.productName,style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w400,
           ),),
