@@ -46,6 +46,48 @@ To address these challenges, several strategies and solutions were implemented:
 CraftyBay is continuously evolving to enhance the shopping experience for users, and your feedback and contributions are welcome. Thank you for considering CraftyBay for your ecommerce needs!
 
 
+### Installation
+
+Follow these steps to run the CraftyBay Application:
+
+1. Clone this repository to your local machine:
+
+```bash
+git clone https://github.com/muj-i/crafty_bay.git
+```
+
+2. Navigate to the project folder:
+
+```bash
+cd crafty_bay
+```
+
+3. Install dependencies:
+
+```bash
+flutter pub get
+```
+
+### How to Run
+
+Connect your device or emulator and run the app using the following command:
+
+```bash
+flutter run
+```
+## Used Packages
+
+CraftyBay integrates the following packages to enhance functionality:
+ - `flutter_svg: ^2.0.7:` A Flutter package for rendering SVG (Scalable Vector Graphics) images. It allows you to easily display and manipulate SVG files in your Flutter application.
+ - `get: ^4.6.5:` Get is a state management library for Flutter that simplifies the process of managing application state. It provides a clean and efficient way to handle state and dependencies in your app.
+ - `font_awesome_flutter: ^10.5.0:` This package allows you to easily integrate Font Awesome icons into your Flutter application. Font Awesome is a popular library of vector icons.
+ - `pin_code_fields: ^8.0.1:` Pin Code Fields is a Flutter package that helps you implement PIN or OTP input fields in your app. It's highly customizable and easy to use for user authentication and verification.
+ - `carousel_slider: ^4.2.1:` Carousel Slider is a package for creating image carousels and sliders in your Flutter app. It's useful for creating interactive and dynamic image galleries.
+ - `http: ^1.1.0:` The HTTP package provides a straightforward way to make HTTP requests in your Flutter app. It's essential for fetching data from APIs and working with web services.
+ - `flutter_launcher_ico
+
+
+
 # Project Structure
 ```
 CraftyBoy/
