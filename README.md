@@ -53,7 +53,7 @@ Follow these steps to run the CraftyBay Application:
 1. Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/muj-i/crafty_bay.git
+git clone https://github.com/moniruzzaman76/CraftyBay
 ```
 
 2. Navigate to the project folder:
