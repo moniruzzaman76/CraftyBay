@@ -4,6 +4,24 @@ A new Flutter project.
 
 ![all](https://github.com/moniruzzaman76/Ecommerce-App/assets/107347380/bd7d6a00-b3c5-438a-9eec-a6a246588ccf)
 
+
+## Responsibilities
+
+ - As the creator of CraftyBay, my responsibilities included:
+
+ - App Development: Developing and designing the CraftyBay ecommerce app, ensuring a user-friendly interface and smooth navigation.
+
+ - Product Management: Organizing products into categories. Implementing a dynamic product carousel slider for an engaging shopping experience.
+
+ - User Profiles: Enabling users to create and manage their profiles, making it convenient for them to track their orders and preferences.
+
+ - Product Customization: Implementing the ability for users to select products by color and size, ensuring they can find items that suit their preferences.
+
+ - Wishlist Functionality: Allowing users to add products to their wishlist, making it easy for them to save items they are interested in for future purchases.
+
+ - Product Reviews: Incorporating a review system, enabling users to share their thoughts and experiences with purchased products.
+
+
 # Project Structure
 ```
 CraftyBoy/
