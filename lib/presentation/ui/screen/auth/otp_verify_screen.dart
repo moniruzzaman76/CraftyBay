@@ -1,4 +1,6 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/email_verification_controller.dart';
 import 'package:flutter_ecommerce/State_holders/otp_verify_controller.dart';
 import 'package:flutter_ecommerce/State_holders/read_profile_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/auth/create_profile_screen.dart';
@@ -18,9 +20,18 @@ class OTPVerifyScreen extends StatefulWidget {
 }
 
 class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
-
   TextEditingController otpEditingController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  final EmailVerifyController _emailVerificationController = Get.find<EmailVerifyController>();
+  final OTPVerifyController _otpVerifyController = Get.find<OTPVerifyController>();
+
+  @override
+  void initState() {
+    super.initState();
+    _otpVerifyController.seconds = 120;
+    _otpVerifyController.startTimer();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,27 +46,26 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 120,),
-                  Center(child: SvgPicture.asset(ImageAssets.splashLogo,width: 100,)),
+                  Center(child: SvgPicture.asset(ImageAssets.splashLogo, width: 100,)),
                   const SizedBox(height: 20,),
-                  Text("Enter OTP Code",style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontSize: 25,)
-                  ),
+                  Text("Enter OTP Code", style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontSize: 25,
+                  )),
                   const SizedBox(height: 10,),
-                  Text("A 4 digit otp code has been sent",
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontSize: 16,
-                          color: Colors.grey
-                      )),
+                  Text("A 4 digit otp code has been sent", style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontSize: 16,
+                    color: Colors.grey,
+                  )),
                   const SizedBox(height: 20,),
 
                   PinCodeTextField(
                     controller: otpEditingController,
-                    validator:(value){
-                      if(value == null || value.isEmpty){
-                        return "Please Enter Your Otp Code";
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Please Enter Your OTP Code";
                       }
                       return null;
-                      },
+                    },
                     length: 4,
                     obscureText: false,
                     animationType: AnimationType.fade,
@@ -90,58 +100,84 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
                     width: double.infinity,
                     child: GetBuilder<OTPVerifyController>(
                       builder: (otpVerifyController) {
-                        return Visibility(
-                          visible: !otpVerifyController.otpVerifyInProgress,
-                          replacement: const Center(child: CircularProgressIndicator(),),
-                          child: ElevatedButton(
-                              onPressed: (){
-                                if (_formKey.currentState!.validate()){
-                                  otpVerifyController.otpVerify(widget.email, otpEditingController.text).then((result)async{
-                                    if(result == true){
-                                      await Future.delayed(const Duration(seconds: 3)).then((value)async {
-                                        return Get.find<ReadProfileController>().readProfile();
-                                      });
+                        if (otpVerifyController.otpVerifyInProgress) {
+                          return const Center(child: CircularProgressIndicator());
+                        } else {
+                          return ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                otpVerifyController.otpVerify(widget.email, otpEditingController.text).then((result) async {
+                                  if (result == true) {
+                                    final readProfileController = Get.find<ReadProfileController>();
 
-                                      Get.find<ReadProfileController>().readProfileModel.data!.length == 1 ?
-                                      Get.offAll(()=>const BottomNavBarScreen()):Get.offAll(()=>const ProfileCompleteScreen());
+                                    log(readProfileController.readProfileModel.data?.length.toString() ?? "Profile data is null");
 
-                                    }else{
-                                      Get.snackbar(
-                                          "failed", "Email verify failed!.try again",
-                                          backgroundColor: Colors.red,
-                                          colorText: Colors.white
-                                      );
+                                    await Future.delayed(const Duration(seconds: 3)).then((value) async {
+                                      return readProfileController.readProfile();
+                                    });
+
+                                    log(readProfileController.readProfileModel.data?.length.toString() ?? "Profile data is null");
+
+                                    if (readProfileController.readProfileModel.data?.length == 1) {
+                                      Get.offAll(() => const BottomNavBarScreen());
+                                    } else {
+                                      Get.offAll(() => const ProfileCompleteScreen());
                                     }
-                                  });
-                                }
+                                  } else {
+                                    Get.snackbar(
+                                      "Failed",
+                                      "Email verify failed! Try again",
+                                      backgroundColor: Colors.red,
+                                      colorText: Colors.white,
+                                    );
 
-                              }, child: const Text(
-                              "Next"
-                          )),
-                        );
-                      }
+                                    otpEditingController.clear();
+                                    _otpVerifyController.timer.cancel();
+                                  }
+                                });
+                              }
+                            },
+                            child: const Text("Next"),
+                          );
+                        }
+                      },
                     ),
                   ),
                   const SizedBox(
                     height: 16,
                   ),
-                  RichText(
-                    text: const TextSpan(
-                      text: 'This code will expire in',
-                      style: TextStyle(color: Colors.grey),
-                      children:[
-                        TextSpan(text:' 120s',style: TextStyle(
-                            color: AppColors.primaryColor,
-                          fontWeight: FontWeight.bold,
-                        )),
-                      ],
-                    ),
+                  GetBuilder<OTPVerifyController>(
+                    builder: (otpVerifyController) {
+                      return RichText(
+                        text: TextSpan(
+                          text: 'This code will expire in',
+                          style: const TextStyle(color: Colors.grey),
+                          children: [
+                            TextSpan(
+                              text: ' ${otpVerifyController.seconds} s',
+                              style: TextStyle(
+                                color: otpVerifyController.seconds == 0 ? Colors.grey : AppColors.primaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                   TextButton(
-                      onPressed: (){
-                      }, child:const Text("Resent Code",style: TextStyle(
-                    color: AppColors.primaryColor,
-                  ),)
+                    onPressed: () {
+                      if (_otpVerifyController.seconds == 0) {
+                        _emailVerificationController.emailVerify(widget.email);
+                        _otpVerifyController.seconds = 120;
+                        _otpVerifyController.startTimer();
+                      }
+                    },
+                    child: Text("Resend Code", style: TextStyle(
+                      color: _otpVerifyController.seconds == 0
+                          ? AppColors.primaryColor
+                          : Colors.grey,
+                    )),
                   )
                 ],
               ),
@@ -152,4 +188,3 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
     );
   }
 }
-

@@ -1,4 +1,4 @@
-import 'package:flutter_ecommerce/data/model/model_data/slider_model_data.dart';
+import 'package:flutter_ecommerce/data/model/slider_model_data.dart';
 
 class ProductHomeSlidersModel {
   String? msg;

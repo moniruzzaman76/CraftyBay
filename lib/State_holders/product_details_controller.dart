@@ -1,4 +1,4 @@
-import 'package:flutter_ecommerce/data/model/model_data/product_details_data.dart';
+import 'package:flutter_ecommerce/data/model/product_details_data.dart';
 import 'package:flutter_ecommerce/data/model/network_response.dart';
 import 'package:flutter_ecommerce/data/model/product_details_model.dart';
 import 'package:flutter_ecommerce/data/services/network_caller.dart';

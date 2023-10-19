@@ -18,7 +18,7 @@ class CardListController extends GetxController{
   Future<bool>getCardList()async {
     _cardListInProgress = true;
     update();
-    final NetworkResponse response = await NetworkCaller().getRequest(Urls.cardList);
+    final NetworkResponse response = await NetworkCaller().getRequest(Urls.cardList,isLogin: true);
     _cardListInProgress = false;
     update();
 

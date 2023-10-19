@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/category_product_list_controller.dart';
-import 'package:flutter_ecommerce/data/model/model_data/product_remark_model_data.dart';
+import 'package:flutter_ecommerce/data/model/product_remark_model_data.dart';
 import 'package:get/get.dart';
 import '../widgets/product_card.dart';
 

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:core';
 import 'package:flutter_ecommerce/State_holders/auth_controller.dart';
 import 'package:flutter_ecommerce/data/model/network_response.dart';
@@ -6,6 +7,23 @@ import 'package:flutter_ecommerce/data/utils/urls.dart';
 import 'package:get/get.dart';
 
 class OTPVerifyController extends GetxController{
+
+
+  late int seconds;
+  late Timer _timer;
+
+  Timer get timer => _timer;
+
+  void startTimer() {
+    const oneSecond = Duration(seconds: 1);
+    _timer = Timer.periodic(oneSecond, (timer) {
+      seconds == 0 ? _timer.cancel() : seconds--;
+      update();
+    });
+  }
+
+
+
   bool _otpVerifyInProgress = false;
    bool get otpVerifyInProgress => _otpVerifyInProgress;
 

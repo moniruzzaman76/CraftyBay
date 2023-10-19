@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onPress: (){
               AuthController.clear();
             },
-            icon: Icons.notifications_outlined,
+            icon: Icons.login_outlined,
           ),
           const SizedBox(width: 10,),
         ],

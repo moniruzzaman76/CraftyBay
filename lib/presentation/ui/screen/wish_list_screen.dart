@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/State_holders/auth_controller.dart';
 import 'package:flutter_ecommerce/State_holders/wish_list_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/wishList_product_card.dart';
 import 'package:get/get.dart';
+import '../../../State_holders/auth_controller.dart';
 import '../../../State_holders/main_botom_nav_controller.dart';
 import 'auth/email_verify_screen.dart';
 
@@ -17,14 +17,12 @@ class _WishListScreenState extends State<WishListScreen> {
 
 
   @override
-  void initState() {
+  void initState(){
     super.initState();
+    AuthController.getAccessToken();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if(AuthController.isLoggedIn){
-        await Get.find<WishListController>().getWishList();
-      }else{
-        Get.to(()=> const EmailVerificationScreen());
-      }
+     await Get.to(()=> const EmailVerificationScreen());
+
     });
   }
 

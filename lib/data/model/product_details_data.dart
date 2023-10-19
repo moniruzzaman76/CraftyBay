@@ -1,4 +1,4 @@
-import '../product_details_model.dart';
+import 'product_details_model.dart';
 
 class ProductDetails {
   int? id;

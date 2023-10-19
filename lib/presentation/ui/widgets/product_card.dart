@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/CreateWishListController.dart';
 import 'package:get/get.dart';
-import '../../../data/model/model_data/product_remark_model_data.dart';
+import '../../../data/model/product_remark_model_data.dart';
 import '../screen/product_details_screen.dart';
 import '../utils/app_colors.dart';
 

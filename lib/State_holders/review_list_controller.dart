@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../data/model/model_data/product_review_model.dart';
+import '../data/model/product_review_model.dart';
 import '../data/model/network_response.dart';
 import '../data/services/network_caller.dart';
 import '../data/utils/urls.dart';

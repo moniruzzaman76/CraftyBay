@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../data/model/model_data/category_model_data.dart';
+import '../../../data/model/category_model_data.dart';
 import '../utils/app_colors.dart';
 
 class CategoryCard extends StatelessWidget {

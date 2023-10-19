@@ -17,16 +17,12 @@ class CardScreen extends StatefulWidget {
 
 class _CardScreenState extends State<CardScreen> {
 
-
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
-      if(AuthController.isLoggedIn){
-        await Get.find<CardListController>().getCardList();
-      }else{
-       Get.to(()=> const EmailVerificationScreen());
-      }
+    AuthController.getAccessToken();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await Get.to(()=> const EmailVerificationScreen());
     });
   }
 

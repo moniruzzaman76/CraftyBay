@@ -1,4 +1,4 @@
-import 'model_data/product_remark_model_data.dart';
+import 'product_remark_model_data.dart';
 
 class ProductReviewModel {
   String? msg;

@@ -9,7 +9,7 @@ import '../model/network_response.dart';
 
 class NetworkCaller {
   /// get request method
-  Future<NetworkResponse> getRequest(String url) async {
+  Future<NetworkResponse> getRequest(String url, {bool isLogin = false}) async {
     try {
       Response response = await get(Uri.parse(url),
         headers: {
@@ -25,7 +25,10 @@ class NetworkCaller {
         return NetworkResponse(
             true, response.statusCode, jsonDecode(response.body));
       } else if (response.statusCode == 401) {
-        gotoLogin();
+        if(isLogin){
+          gotoLogin();
+        }
+
       } else {
         return NetworkResponse(false, response.statusCode, null);
       }
@@ -37,9 +40,7 @@ class NetworkCaller {
 
 
   /// post Method
-  Future<NetworkResponse> postRequest(String url, Map<String, dynamic> body,
-      ) async {
-    //{bool isLogin = false}
+  Future<NetworkResponse> postRequest(String url, Map<String, dynamic> body,{bool isLogin = false}) async {
     try {
       Response response = await post(
         Uri.parse(url),
@@ -61,9 +62,9 @@ class NetworkCaller {
           jsonDecode(response.body),
         );
       } else if (response.statusCode == 401) {
-        //if (isLogin == false) {
+        if (isLogin == false) {
           gotoLogin();
-        //}
+        }
       } else {
         return NetworkResponse(false, response.statusCode, null);
       }
@@ -76,10 +77,9 @@ class NetworkCaller {
 
   static Future<void> gotoLogin() async {
     await AuthController.clear();
-    Navigator.pushAndRemoveUntil(
+    Navigator.push(
         CraftyBay.globalKey.currentContext!,
-        MaterialPageRoute(builder: (context)=> const EmailVerificationScreen()),
-            (route) => false);
+        MaterialPageRoute(builder: (context)=> const EmailVerificationScreen()));
 
   }
 

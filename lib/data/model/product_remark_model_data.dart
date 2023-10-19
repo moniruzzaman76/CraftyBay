@@ -1,4 +1,4 @@
-import '../product_remark_model.dart';
+import 'product_remark_model.dart';
 
 class RemarkData {
   int? id;

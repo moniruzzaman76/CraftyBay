@@ -1,4 +1,4 @@
-import 'model_data/product_details_data.dart';
+import 'product_details_data.dart';
 
 class ProductDetailsModel {
   String? msg;

@@ -59,7 +59,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   children: [
                     Stack(
                       children: [
-                        ProductImageSlider(imageList: [
+                        ProductImageSlider(
+                            imageList: [
                           productDetailController.productDetails.img1 ?? "",
                           productDetailController.productDetails.img2 ?? "",
                           productDetailController.productDetails.img3 ?? "",
@@ -203,9 +204,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           );
                         } else {
                           Get.snackbar(
-                            "failed",
-                            "Product Added to Card",
-                            backgroundColor: Colors.red,
+                            "Please Login",
+                            "Then Purchase Product your Choose",
+                            backgroundColor: Colors.green,
                           );
                         }
                       });
