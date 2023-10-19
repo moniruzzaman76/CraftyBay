@@ -6,6 +6,7 @@ A new Flutter project.
 
 # Project Structure
 '''
+
 CraftyBoy/
 ├── assets/
 │   └── images/
