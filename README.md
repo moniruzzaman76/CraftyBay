@@ -182,6 +182,21 @@ CraftyBoy/
     └── main.dart
 ```
 
+## Contributors
+
+- [Moniruzzaman](https://github.com/moniruzzaman76)
+
+## Special Thanks
+
+### A heartfelt thanks to my mentors:
+
+ - [Rabbil Hasan](https://github.com/rupomsoft) for his enlightening prerecorded classes and [Md Rafat J. M.](https://github.com/RafatMeraz) for teaching me how to make UI like this and the API integration seamless.
+
+### A heartfelt thanks to my classmates:
+
+- [Mujahedul Islam](https://github.com/muj-i) & [Md Alhaz Mondal Hredhay](https://github.com/hredhayxz) to share their knowledges with me & help me complete the project.
+
+
 
 ## Getting Started
 
