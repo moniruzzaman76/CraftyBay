@@ -1,6 +1,6 @@
 import 'package:flutter_ecommerce/data/model/read_profile_model.dart';
 import 'package:get/get.dart';
-import '../data/model/network_response.dart';
+import '../data/services/network_response.dart';
 import '../data/services/network_caller.dart';
 import '../data/utils/urls.dart';
 

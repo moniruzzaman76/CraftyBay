@@ -5,7 +5,7 @@ import 'package:flutter_ecommerce/State_holders/auth_controller.dart';
 import 'package:flutter_ecommerce/application/app.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/auth/email_verify_screen.dart';
 import 'package:http/http.dart';
-import '../model/network_response.dart';
+import 'network_response.dart';
 
 class NetworkCaller {
   /// get request method

@@ -1,4 +1,4 @@
-import 'package:flutter_ecommerce/data/model/network_response.dart';
+import 'package:flutter_ecommerce/data/services/network_response.dart';
 import 'package:flutter_ecommerce/data/services/network_caller.dart';
 import 'package:flutter_ecommerce/data/utils/urls.dart';
 import 'package:get/get.dart';

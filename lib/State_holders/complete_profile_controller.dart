@@ -1,5 +1,5 @@
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import '../data/model/network_response.dart';
+import '../data/services/network_response.dart';
 import '../data/services/network_caller.dart';
 import '../data/utils/urls.dart';
 

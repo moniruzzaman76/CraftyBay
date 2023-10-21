@@ -37,7 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title:SvgPicture.asset(ImageAssets.homeLogo),
         actions: [
            CircularIconButton(
-             onPress: (){},
+             onPress: (){
+
+             },
              icon: Icons.person_outline_outlined,
            ),
           const SizedBox(width: 10,),
@@ -47,8 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(width: 10,),
           CircularIconButton(
-            onPress: (){
-              AuthController.clear();
+            onPress: ()async{
+               await AuthController.clear();
+               await AuthController.getAccessToken();
             },
             icon: Icons.login_outlined,
           ),
