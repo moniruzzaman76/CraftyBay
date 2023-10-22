@@ -24,8 +24,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   int selectedColor = 0;
   int selectedSize = 0;
 
-  double totalAmount = 0.0;
-  final ValueNotifier<int> _selectedValue = ValueNotifier(0);
+   double _totalAmount = 0.0;
 
   @override
   void initState() {
@@ -47,7 +46,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         List<Color> availableColors = getColorsFromString(productDetailController.productDetails.color ?? "");
         List<String> availableSizes = getSizesFromString(productDetailController.productDetails.size ?? "");
 
-        totalAmount = double.parse(productDetailController.productDetails.product?.price.toString() ?? "");
+        _totalAmount = double.parse(productDetailController.productDetails.product?.price ?? "0");
 
         return SafeArea(
           child: Column(
@@ -90,13 +89,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 child: FittedBox(
                                   child: CustomStepper(
                                       lowerLimit: 1,
-                                      upperLimit: 10,
+                                      upperLimit: 20,
                                       stepValue: 1,
-                                      value: 2,
+                                      value: 1,
                                       onChange: (newValue) {
-                                        var total = _selectedValue.value = newValue; // Update the selected value
-                                        totalAmount = double.parse(productDetailController.productDetails.product?.price ?? "0") *total;
-                                        print(totalAmount);
+                                        var _totalPrice = _totalAmount * newValue;
+
+                                        print(newValue);
+                                        print(_totalPrice);// Upd
+
                                       }),
                                 ),
                               )
@@ -179,43 +180,46 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ],
                 )),
               ),
-              GetBuilder<CreateAddToCardController>(
-                  builder: (addToCardController) {
-                return PaymentCard(
+
+                PaymentCard(
                   title: "Price",
-                  totalCount: "\$${totalAmount.toString()}",
+                  totalCount: "\$${productDetailController.productDetails.product?.price ?? 0}",
                   buttonName: 'Add to cart',
-                  child: Visibility(
-                    visible: !addToCardController.addToCardInProgress,
-                    replacement: const Center(child: CircularProgressIndicator(),),
-                    child: ElevatedButton(
-                    onPressed: () {
-                      addToCardController.addToCard(
-                        productDetailController.productDetails.id!,
-                        availableColors[selectedColor].toString(),
-                        availableSizes[selectedSize],
-                      ).then((result) {
-                        if (result == true) {
-                          Get.snackbar(
-                            "Success",
-                            "Product Added to Card",
-                            backgroundColor: Colors.green,
-                          );
-                        } else {
-                          Get.snackbar(
-                            "Please Login",
-                            "Then Purchase Product your Choose",
-                            backgroundColor: Colors.green,
-                          );
-                        }
-                      });
-                    },
-                    child: const Text("Add To Card"),
+                  child: GetBuilder<CreateAddToCardController>(
+                    builder: (addToCardController) {
+                      return Visibility(
+                        visible: !addToCardController.addToCardInProgress,
+                        replacement: const Center(child: CircularProgressIndicator(),),
+                        child: ElevatedButton(
+                        onPressed: () {
+                          addToCardController.addToCard(
+                            productDetailController.productDetails.id!,
+                            availableColors[selectedColor].toString(),
+                            availableSizes[selectedSize],
+                          ).then((result) {
+                            if (result == true) {
+                              Get.snackbar(
+                                "Success",
+                                "Product Added to Card",
+                                backgroundColor: Colors.green,
+                              );
+                            } else {
+                              Get.snackbar(
+                                "Please Login",
+                                "Then Purchase Product your Choose",
+                                backgroundColor: Colors.green,
+                              );
+                            }
+                          });
+                        },
+                        child: const Text("Add To Card"),
 
                 ),
+                      );
+                    }
                   ),
-                );
-              }),
+                ),
+
             ],
           ),
         );

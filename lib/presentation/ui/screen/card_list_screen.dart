@@ -85,10 +85,12 @@ class _CardScreenState extends State<CardScreen> {
               padding:  const EdgeInsets.symmetric(horizontal: 16, vertical: 17),
               title:"Total Price" ,
               titleFontSize: 12,
-              totalCount: '\$100.000',
+              totalCount: '\$${Get.find<CardListController>().totalPrice}',
               buttonName: 'check out',
              child: ElevatedButton(
-               onPressed: (){},
+               onPressed: (){
+
+               },
                child: const Text("Add To Card"),
              ),
             ),

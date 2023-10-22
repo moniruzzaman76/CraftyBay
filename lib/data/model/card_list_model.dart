@@ -37,7 +37,7 @@ class CartAndWishData {
   String? createdAt;
   String? updatedAt;
   Product? product;
-  //int numberOfItems = 1;
+  int numberOfItems = 1;
 
   CartAndWishData(
       {this.id,

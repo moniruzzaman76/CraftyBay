@@ -69,7 +69,7 @@ class ProductAddToCard extends StatelessWidget {
                         const SizedBox(height: 12,),
                         Row(
                           children: [
-                            const Text("\$100",style: TextStyle(
+                             Text("\$${cardData.product?.price ?? 1500}",style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
                               color: AppColors.primaryColor,
@@ -82,9 +82,9 @@ class ProductAddToCard extends StatelessWidget {
                                     lowerLimit: 1,
                                     upperLimit: 10,
                                     stepValue: 1,
-                                    value: 1,
-                                    onChange: (newValue) {
-                                      print(newValue);
+                                    value: cardData.numberOfItems,
+                                    onChange: (int newValue) {
+                                     Get.find<CardListController>().changeItem(cardData.id!, newValue);
                                     }),
                               ),
                             )
