@@ -3,6 +3,8 @@
 A new Flutter project.
 
 ![all](https://github.com/moniruzzaman76/Ecommerce-App/assets/107347380/bd7d6a00-b3c5-438a-9eec-a6a246588ccf)
+![image](https://github.com/moniruzzaman76/CraftyBay/assets/107347380/5e978ecb-440d-4402-a77d-3c243e0fae19)
+
 
 ## Description
 CraftyBay is a feature-rich ecommerce app designed to provide users with a seamless and enjoyable shopping experience. With a focus on user-friendliness and a wide range of products, CraftyBay allows users to explore, purchase, and review products with ease.
