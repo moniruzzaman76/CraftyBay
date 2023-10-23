@@ -1,8 +1,8 @@
 # flutter_ecommerce
 
-A new Flutter project.
+Overview Of Project UI Design 
 
-![image](https://github.com/moniruzzaman76/CraftyBay/assets/107347380/5e978ecb-440d-4402-a77d-3c243e0fae19)
+![image](https://github.com/moniruzzaman76/CraftyBay/assets/107347380/76b855df-be9d-4541-b0c9-e37f7aeb9456)
 
 
 ## Description
