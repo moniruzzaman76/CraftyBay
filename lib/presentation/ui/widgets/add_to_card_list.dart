@@ -15,7 +15,7 @@ class ProductAddToCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(0),
       child: SizedBox(
         height: 126,
         child: Card(
@@ -38,12 +38,17 @@ class ProductAddToCard extends StatelessWidget {
                   child: ListTile(
                     title:  Row(
                       children: [
-                        Text(cardData.product?.title ?? "New Year Special Shoe",maxLines: 1,style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                          overflow: TextOverflow.ellipsis,
-                        ),),
+                        SizedBox(
+                          width: 207,
+                          child: FittedBox(
+                            child: Text(cardData.product?.title ?? "New Year Special Shoe",maxLines: 1,style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 17,
+                              overflow: TextOverflow.ellipsis,
+                            ),),
+                          ),
+                        ),
                         const Spacer(),
                         IconButton(
                             onPressed: (){
@@ -82,7 +87,7 @@ class ProductAddToCard extends StatelessWidget {
                                     lowerLimit: 1,
                                     upperLimit: 10,
                                     stepValue: 1,
-                                    value: cardData.numberOfItems,
+                                    value: int.parse(cardData.qty!),
                                     onChange: (int newValue) {
                                      Get.find<CardListController>().changeItem(cardData.id!, newValue);
                                     }),

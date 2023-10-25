@@ -6,7 +6,6 @@ import 'package:flutter_ecommerce/presentation/ui/screen/product_review_list_scr
 import 'package:flutter_ecommerce/presentation/ui/widgets/home/product_image_slider.dart';
 import 'package:get/get.dart';
 import '../utils/app_colors.dart';
-import '../utils/color_extension.dart';
 import '../widgets/app_bar_back_button.dart';
 import '../widgets/custom_stepper.dart';
 import '../widgets/payment_card.dart';
@@ -21,15 +20,18 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+
   int selectedColor = 0;
   int selectedSize = 0;
-
-   double _totalAmount = 0.0;
+  int quantity = 1;
 
   @override
   void initState() {
     super.initState();
-    Get.find<ProductDetailController>().getProductDetails(widget.productId);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Get.find<ProductDetailController>().getProductDetails(widget.productId);
+    });
+
   }
 
   @override
@@ -43,10 +45,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           );
         }
 
-        List<Color> availableColors = getColorsFromString(productDetailController.productDetails.color ?? "");
+        List<String> availableColors = getColorFromString(productDetailController.productDetails.color ?? "");
         List<String> availableSizes = getSizesFromString(productDetailController.productDetails.size ?? "");
-
-        _totalAmount = double.parse(productDetailController.productDetails.product?.price ?? "0");
 
         return SafeArea(
           child: Column(
@@ -93,11 +93,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       stepValue: 1,
                                       value: 1,
                                       onChange: (newValue) {
-                                        var _totalPrice = _totalAmount * newValue;
-
-                                        print(newValue);
-                                        print(_totalPrice);// Upd
-
+                                        quantity = newValue;
                                       }),
                                 ),
                               )
@@ -168,7 +164,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           const SizedBox(height: 16,),
                           const SectionTitle(title: "Description",),
                           const SizedBox(height: 8,),
-                          Text(productDetailController.productDetails.product?.shortDes ?? "",
+                          Text(productDetailController.productDetails.des ?? "",
                             style: const TextStyle(
                               fontSize: 15,
                               color: Colors.black87,
@@ -195,7 +191,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           addToCardController.addToCard(
                             productDetailController.productDetails.id!,
                             availableColors[selectedColor].toString(),
-                            availableSizes[selectedSize],
+                            availableSizes[selectedSize].toString(),
+                             quantity,
                           ).then((result) {
                             if (result == true) {
                               Get.snackbar(
@@ -213,13 +210,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           });
                         },
                         child: const Text("Add To Card"),
-
                 ),
                       );
                     }
                   ),
                 ),
-
             ],
           ),
         );
@@ -227,6 +222,49 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 
+
+  SizedBox colorPicker(List<String> availableColors) {
+    return SizedBox(
+      height: 28,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: availableColors.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {
+              selectedColor = index;
+              if (mounted) {
+                setState(() {});
+              }
+              print(index);
+              print(availableColors[index].toString());
+            },
+            child: Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(3),
+                  color: selectedColor == index
+                      ? AppColors.primaryColor
+                      : Colors.white,
+                ),
+                child: Text(
+                  availableColors[index],
+                  style: TextStyle(
+                    color: selectedColor == index ? Colors.white : Colors.black,
+                  ),
+                )),
+          );
+        },
+        separatorBuilder: (context, index) {
+          return const SizedBox(
+            width: 8,
+          );
+        },
+      ),
+    );
+  }
   SizedBox sizePicker(List<String> availableSizes) {
     return SizedBox(
       height: 28,
@@ -270,46 +308,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 
-  SizedBox colorPicker(List<Color> availableColors) {
-    return SizedBox(
-      height: 28,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: availableColors.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
-              selectedColor = index;
-              if (mounted) {
-                setState(() {});
-              }
-              print(selectedColor);
-              print(availableColors[selectedColor].toString());
-            },
-            child: CircleAvatar(
-              backgroundColor: availableColors[index],
-              radius: 15,
-              child: selectedColor == index
-                  ? const Icon(Icons.check, color: Colors.white,) : null,
-            ),
-          );
-        },
-        separatorBuilder: (context, index) {
-          return const SizedBox(
-            width: 8,
-          );
-        },
-      ),
-    );
-  }
 
-  List<Color> getColorsFromString(String colors) {
-    List<Color> hexaColors = [];
-    final List<String> allColors = colors.split(",");
-    for (var element in allColors) {
-      hexaColors.add(HexColor(element));
-    }
-    return hexaColors;
+  List<String> getColorFromString(String colors) {
+    return colors.split(",");
   }
 
   List<String> getSizesFromString(String sizes) {

@@ -12,7 +12,7 @@ class CreateAddToCardController extends GetxController{
   String? get message => _message;
 
   
-  Future<bool>addToCard(int productId, String color, String size)async{
+  Future<bool>addToCard(int productId, String color, String size, int quantity)async{
 
     _addToCardInProgress = true;
     update();
@@ -20,7 +20,8 @@ class CreateAddToCardController extends GetxController{
     final NetworkResponse response = await NetworkCaller().postRequest(Urls.createAddToCard,<String,dynamic> {
       "product_id":productId.toString(),
       "color":color,
-      "size":size
+      "size":size,
+      "qty":quantity,
     });
 
     _addToCardInProgress = false;

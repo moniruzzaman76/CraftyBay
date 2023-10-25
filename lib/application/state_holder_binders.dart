@@ -12,7 +12,7 @@ import 'package:flutter_ecommerce/State_holders/product_popular_controller.dart'
 import 'package:flutter_ecommerce/State_holders/product_special_controller.dart';
 import 'package:flutter_ecommerce/State_holders/read_profile_controller.dart';
 import 'package:get/get.dart';
-import '../State_holders/complete_profile_controller.dart';
+import '../State_holders/create_profile_controller.dart';
 import '../State_holders/create_review_controller.dart';
 import '../State_holders/email_verification_controller.dart';
 import '../State_holders/main_botom_nav_controller.dart';

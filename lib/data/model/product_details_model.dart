@@ -1,4 +1,4 @@
-import 'product_details_data.dart';
+import 'package:flutter_ecommerce/data/model/product_details_data.dart';
 
 class ProductDetailsModel {
   String? msg;
@@ -27,6 +27,7 @@ class ProductDetailsModel {
 }
 
 
+
 class Product {
   int? id;
   String? title;
@@ -36,7 +37,7 @@ class Product {
   String? discountPrice;
   String? image;
   int? stock;
-  double? star;
+  int? star;
   String? remark;
   int? categoryId;
   int? brandId;

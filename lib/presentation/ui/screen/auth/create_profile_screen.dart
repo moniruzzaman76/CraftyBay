@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/State_holders/complete_profile_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/botom_nav_bar_screen.dart';
-import 'package:flutter_ecommerce/presentation/ui/utils/image_assets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../../../../State_holders/create_profile_controller.dart';
+import '../../utils/image_assets.dart';
 
-class ProfileCompleteScreen extends StatefulWidget {
-  const ProfileCompleteScreen({Key? key}) : super(key: key);
+class CreateProfileScreen extends StatelessWidget {
+  CreateProfileScreen({super.key});
 
-  @override
-  State<ProfileCompleteScreen> createState() => _ProfileCompleteScreenState();
-}
+  final TextEditingController _cusNameTEController = TextEditingController();
+  final TextEditingController _cusAddTEController = TextEditingController();
+  final TextEditingController _cusCityTEController = TextEditingController();
+  final TextEditingController _cusStateTEController = TextEditingController();
+  final TextEditingController _cusPostcodeTEController = TextEditingController();
+  final TextEditingController _cusCountryTEController = TextEditingController();
+  final TextEditingController _cusMobileTEController = TextEditingController();
+  final TextEditingController _cusFaxTEController = TextEditingController();
+  final TextEditingController _shipNameTEController = TextEditingController();
+  final TextEditingController _shipAddTEController = TextEditingController();
+  final TextEditingController _shipCityTEController = TextEditingController();
+  final TextEditingController _shipStateTEController = TextEditingController();
+  final TextEditingController _shipPostcodeTEController = TextEditingController();
+  final TextEditingController _shipCountryTEController = TextEditingController();
+  final TextEditingController _shipMobileTEController = TextEditingController();
 
-class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
-
-  TextEditingController firstNameEditingController = TextEditingController();
-  TextEditingController lastNameEditingController = TextEditingController();
-  TextEditingController mobileEditingController = TextEditingController();
-  TextEditingController emailEditingController = TextEditingController();
-  TextEditingController cityEditingController = TextEditingController();
-  TextEditingController shippingAddressEditingController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -33,139 +36,367 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
             child: Form(
               key: _formKey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 18,),
-                  Center(child: SvgPicture.asset(ImageAssets.splashLogo,width: 100,)),
-                   const SizedBox(height: 20,),
-                   Text("Complete Profile",style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                     fontSize: 25,)
-                   ),
-                  const SizedBox(height: 7,),
-                  Text("Get started with us with your details",
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontSize: 15,
-                    color: Colors.grey
-                  )),
-                  const SizedBox(height: 20,),
+                  Center(child: SvgPicture.asset(ImageAssets.splashLogo, width: 100,)),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Text(
+                    'Complete Profile',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 24,),
+                  ),
+                  const SizedBox(height: 4,),
+                  Text('Get started with us by share your details',
+                      style: Theme.of(context).textTheme.titleMedium
+                          ?.copyWith(color: Colors.grey)),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Text(
+                    'User Details',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontSize: 20,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
                   TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Enter your First First';
+                    keyboardType: TextInputType.name,
+                    controller: _cusNameTEController,
+                    decoration: const InputDecoration(
+                      hintText: 'John Doe',
+                      labelText: 'Full Name',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter your full name';
                       }
                       return null;
                     },
-                    controller: firstNameEditingController,
-                    decoration: const InputDecoration(
-                      hintText: "First Name",
-                    ),
                   ),
-                  const SizedBox(height: 16,),
+                  const SizedBox(
+                    height: 12,
+                  ),
                   TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Enter your Last Name';
+                    maxLines: 2,
+                    keyboardType: TextInputType.text,
+                    controller: _cusAddTEController,
+                    decoration: const InputDecoration(
+                      hintText: '237 Delia Ports',
+                      labelText: 'Your Address',
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 16,
+                      ),
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter your address';
                       }
                       return null;
                     },
-                    controller: lastNameEditingController,
-                    decoration: const InputDecoration(
-                      hintText: "Last Name",
-                    ),
                   ),
-                  const SizedBox(height: 16,),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.text,
+                    controller: _cusCityTEController,
+                    decoration: const InputDecoration(
+                      hintText: 'Mireyamouth',
+                      labelText: 'City',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter your city name';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.text,
+                    controller: _cusStateTEController,
+                    decoration: const InputDecoration(
+                      hintText: 'Texas',
+                      labelText: 'State',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter your state name';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
                   TextFormField(
                     keyboardType: TextInputType.number,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Enter your Mobile Number';
+                    controller: _cusPostcodeTEController,
+                    decoration: const InputDecoration(
+                      hintText: '55064-6682',
+                      labelText: 'Postcode',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter your postcode';
                       }
                       return null;
                     },
-                    controller: mobileEditingController,
-                    decoration: const InputDecoration(
-                      hintText: "Mobile Number",
-                    ),
                   ),
-
-                  const SizedBox(height: 16,),
+                  const SizedBox(
+                    height: 12,
+                  ),
                   TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Enter your city';
+                    keyboardType: TextInputType.text,
+                    controller: _cusCountryTEController,
+                    decoration: const InputDecoration(
+                      hintText: 'USA',
+                      labelText: 'Country',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter your country name';
                       }
                       return null;
                     },
-                    controller: cityEditingController,
-                    decoration: const InputDecoration(
-                      hintText: "City",
-                    ),
                   ),
-
-                  const SizedBox(height: 16,),
+                  const SizedBox(
+                    height: 12,
+                  ),
                   TextFormField(
-                    maxLines: 3,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Enter your Shipping Address';
+                    keyboardType: TextInputType.phone,
+                    controller: _cusMobileTEController,
+                    decoration: const InputDecoration(
+                      hintText: '01**********',
+                      labelText: 'Mobile',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter your mobile number';
+                      } else {
+                        if (text!.length < 11) {
+                          return 'Mobile should be at least 11 digit';
+                        }
                       }
                       return null;
                     },
-                    controller: shippingAddressEditingController,
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.phone,
+                    controller: _cusFaxTEController,
                     decoration: const InputDecoration(
-                      hintText: "Shipping Address",
+                      hintText: '356******',
+                      labelText: 'Fax',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter your fax number';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Text(
+                    'Shipping Details',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontSize: 20,
                     ),
                   ),
-
-                  const SizedBox(height: 16,),
-
-                  GetBuilder<CreateProfileController>(
-                    builder: (completeProfileController) {
-                      return Visibility(
-                        visible: !completeProfileController.createProfileInProgress,
-                        replacement: const Center(child: CircularProgressIndicator(),),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                              onPressed: (){
-                                if (_formKey.currentState!.validate()){
-                                  completeProfileController.createProfile(
-
-                                      firstNameEditingController.text.trim(),
-                                      lastNameEditingController.text.trim(),
-                                      mobileEditingController.text.trim(),
-                                      cityEditingController.text.trim(),
-                                      shippingAddressEditingController.text.trim()).then((result){
-                                        if(result == true){
-                                          Get.to(()=> const BottomNavBarScreen());
-                                          firstNameEditingController.clear();
-                                          lastNameEditingController.clear();
-                                          mobileEditingController.clear();
-                                          cityEditingController.clear();
-                                          shippingAddressEditingController.clear();
-                                          Get.snackbar(
-                                              "Success!", "Profile Completed has been done",
-                                              backgroundColor: Colors.green,
-                                              colorText: Colors.white
-                                          );
-                                          Get.offAll(()=>const BottomNavBarScreen());
-                                        }else{
-                                          Get.snackbar(
-                                              "Failed!", "Please try again",
-                                              backgroundColor: Colors.red,
-                                              colorText: Colors.white
-                                          );
-                                        }
-                                  });
-
-                                }
-                          }, child: const Text(
-                          "Complete"
-                          )),
-                        ),
-                      );
-                    }
-                  )
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.name,
+                    controller: _shipNameTEController,
+                    decoration: const InputDecoration(
+                      hintText: 'John Doe',
+                      labelText: 'Shipping Person Name',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter shipping person full name';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  TextFormField(
+                    maxLines: 2,
+                    keyboardType: TextInputType.text,
+                    controller: _shipAddTEController,
+                    decoration: const InputDecoration(
+                      hintText: '237 Delia Ports',
+                      labelText: 'Shipping Address',
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 16,
+                      ),
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter your address';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.text,
+                    controller: _shipCityTEController,
+                    decoration: const InputDecoration(
+                      hintText: 'Mireyamouth',
+                      labelText: 'Shipping City',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter shipping city name';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.text,
+                    controller: _shipStateTEController,
+                    decoration: const InputDecoration(
+                      hintText: 'Texas',
+                      labelText: 'Shipping State',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter shipping state name';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.number,
+                    controller: _shipPostcodeTEController,
+                    decoration: const InputDecoration(
+                      hintText: '55064-6682',
+                      labelText: 'Shipping Postcode',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter shipping postcode';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.text,
+                    controller: _shipCountryTEController,
+                    decoration: const InputDecoration(
+                      hintText: 'USA',
+                      labelText: 'Shipping Country',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter shipping country name';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.phone,
+                    controller: _shipMobileTEController,
+                    decoration: const InputDecoration(
+                      hintText: '01**********',
+                      labelText: 'Shipping Mobile',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter shipping mobile number';
+                      } else {
+                        if (text!.length < 11) {
+                          return 'Mobile should be at least 11 digit';
+                        }
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: GetBuilder<CreateProfileController>(
+                        builder: (createProfileController) {
+                          if (createProfileController.createProfileInProgress) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                          return ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                createProfileController.createProfile(
+                                  _cusNameTEController.text.trim(),
+                                  _cusAddTEController.text.trim(),
+                                  _cusCityTEController.text.trim(),
+                                  _cusStateTEController.text.trim(),
+                                  _cusPostcodeTEController.text.trim(),
+                                  _cusCountryTEController.text.trim(),
+                                  _cusMobileTEController.text.trim(),
+                                  _cusFaxTEController.text.trim(),
+                                  _shipNameTEController.text.trim(),
+                                  _shipAddTEController.text.trim(),
+                                  _shipCityTEController.text.trim(),
+                                  _shipStateTEController.text.trim(),
+                                  _shipPostcodeTEController.text.trim(),
+                                  _shipCountryTEController.text.trim(),
+                                  _shipMobileTEController.text.trim(),
+                                ).then((result) {
+                                  if (result==true) {
+                                    Get.snackbar(
+                                        'Success', 'Profile create successful.',
+                                        backgroundColor: Colors.green,
+                                        colorText: Colors.white,
+                                        borderRadius: 10,
+                                    );
+                                    Get.offAll(() => const BottomNavBarScreen());
+                                  } else {
+                                    Get.snackbar('Failed', 'Profile create failed! Try again.',
+                                        backgroundColor: Colors.red,
+                                        colorText: Colors.white,
+                                        borderRadius: 10,
+                                    );
+                                  }
+                                });
+                              }
+                            },
+                            child: const Text('Complete'),
+                          );
+                        }),
+                  ),
                 ],
               ),
             ),

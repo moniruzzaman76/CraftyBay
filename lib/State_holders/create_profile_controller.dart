@@ -11,16 +11,29 @@ class CreateProfileController extends GetxController{
   String ? _message;
   String ? get message => _message;
 
-  Future<bool>createProfile(String firstName, lastName, mobile,city,shippingAddress)async{
+  Future<bool>createProfile(
+      String cusName,cusAddress,cusCity,cusState,cusPostcode,cusCountry, cusPhone,
+      cusFax,shipName,shipAdd,shipCity,shipState,shipPostcode,shipCountry,shipPhone,)async{
+
     _createProfileInProgress = true;
     update();
 
     final NetworkResponse response = await NetworkCaller().postRequest(Urls.createProfile, <String,dynamic>{
-      "firstName":firstName,
-      "lastName":lastName,
-      "mobile":mobile,
-      "city":city,
-      "shippingAddress": shippingAddress,
+      "cus_name": cusName,
+      "cus_add": cusAddress,
+      "cus_city": cusCity,
+      "cus_state": cusState,
+      "cus_postcode": cusPostcode,
+      "cus_country": cusCountry,
+      "cus_phone": cusPhone,
+      "cus_fax": cusFax,
+      "ship_name": shipName,
+      "ship_add": shipAdd,
+      "ship_city": shipCity,
+      "ship_state": shipState,
+      "ship_postcode": shipPostcode,
+      "ship_country": shipCountry,
+      "ship_phone": shipPhone,
     });
 
     _createProfileInProgress = false;

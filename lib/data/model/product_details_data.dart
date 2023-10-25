@@ -1,4 +1,4 @@
-import 'product_details_model.dart';
+import 'package:flutter_ecommerce/data/model/product_details_model.dart';
 
 class ProductDetails {
   int? id;
@@ -26,8 +26,7 @@ class ProductDetails {
         this.productId,
         this.createdAt,
         this.updatedAt,
-        this.product
-      });
+        this.product});
 
   ProductDetails.fromJson(Map<String, dynamic> json) {
     id = json['id'];

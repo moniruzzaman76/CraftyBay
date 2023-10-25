@@ -23,27 +23,28 @@ class CardListController extends GetxController{
     update();
     final NetworkResponse response = await NetworkCaller().getRequest(Urls.cardList,isLogin: true);
     _cardListInProgress = false;
-    update();
 
     if(response.isSuccess){
       _cartListModel = WishAndCardListModel.fromJson(response.responseJson!);
       _calculateTotalPrice();
+      update();
       return true;
     }else{
       _message = "failed! get to Card list data";
+      update();
       return false;
     }
   }
 
-  void changeItem(int cartId, int noOfItems) {
-    _cartListModel.data?.firstWhere((cartData) => cartData.id == cartId).numberOfItems = noOfItems;
+  void changeItem(int cartId, int noOfProduct) {
+    _cartListModel.data?.firstWhere((e) => e.id == cartId).qty = noOfProduct.toString();
     _calculateTotalPrice();
   }
 
   void _calculateTotalPrice() {
     _totalPrice = 0;
     for (CartAndWishData data in _cartListModel.data ?? []) {
-      _totalPrice += ((data.numberOfItems) * (double.tryParse(data.product?.price ?? '0') ?? 0));
+      _totalPrice += ((int.parse(data.qty!)) * (double.tryParse(data.product?.price ?? '0') ?? 0));
     }
     update();
   }

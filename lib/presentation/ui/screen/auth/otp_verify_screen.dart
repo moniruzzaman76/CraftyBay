@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/email_verification_controller.dart';
 import 'package:flutter_ecommerce/State_holders/otp_verify_controller.dart';
@@ -39,7 +38,7 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(8.0),
             child: Form(
               key: _formKey,
               child: Column(
@@ -66,7 +65,7 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
                       }
                       return null;
                     },
-                    length: 4,
+                    length: 6,
                     obscureText: false,
                     animationType: AnimationType.fade,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -104,24 +103,16 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
                           return const Center(child: CircularProgressIndicator());
                         } else {
                           return ElevatedButton(
-                            onPressed: () {
+                            onPressed: () async{
                               if (_formKey.currentState!.validate()) {
                                 otpVerifyController.otpVerify(widget.email, otpEditingController.text).then((result) async {
                                   if (result == true) {
-                                    final readProfileController = Get.find<ReadProfileController>();
-
-                                    log(readProfileController.readProfileModel.data?.length.toString() ?? "Profile data is null");
-
-                                    await Future.delayed(const Duration(seconds: 3)).then((value) async {
-                                      return readProfileController.readProfile();
-                                    });
-
-                                    log(readProfileController.readProfileModel.data?.length.toString() ?? "Profile data is null");
-
-                                    if (readProfileController.readProfileModel.data?.length == 1) {
-                                      Get.offAll(() => const BottomNavBarScreen());
+                                     await Get.find<ReadProfileController>().readProfile();
+                                    //log(Get.find<ReadProfileController>().readProfileModel.data.toString());
+                                    if (Get.find<ReadProfileController>().readProfileModel.data != null) {
+                                      Get.offAll(() =>  const BottomNavBarScreen());
                                     } else {
-                                      Get.offAll(() => const ProfileCompleteScreen());
+                                      Get.offAll(() => CreateProfileScreen());
                                     }
                                   } else {
                                     Get.snackbar(
@@ -130,7 +121,6 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
                                       backgroundColor: Colors.red,
                                       colorText: Colors.white,
                                     );
-
                                     otpEditingController.clear();
                                     _otpVerifyController.timer.cancel();
                                   }
@@ -188,3 +178,5 @@ class _OTPVerifyScreenState extends State<OTPVerifyScreen> {
     );
   }
 }
+
+
