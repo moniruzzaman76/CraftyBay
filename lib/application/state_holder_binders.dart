@@ -2,6 +2,7 @@ import 'package:flutter_ecommerce/State_holders/CreateWishListController.dart';
 import 'package:flutter_ecommerce/State_holders/create_add_to_card_controller.dart';
 import 'package:flutter_ecommerce/State_holders/card_list_controller.dart';
 import 'package:flutter_ecommerce/State_holders/category_controller.dart';
+import 'package:flutter_ecommerce/State_holders/create_invoice_response_controller.dart';
 import 'package:flutter_ecommerce/State_holders/home_sliders_controller.dart';
 import 'package:flutter_ecommerce/State_holders/otp_verify_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_delet_controller.dart';
@@ -41,5 +42,6 @@ class StateHolderBinder extends Bindings{
     Get.put(ProductReviewController());
     Get.put(CreateProfileController());
     Get.put(ReadProfileController());
+    Get.put(CreateInvoiceController());
   }
 }

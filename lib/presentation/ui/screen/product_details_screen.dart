@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import '../utils/app_colors.dart';
 import '../widgets/app_bar_back_button.dart';
 import '../widgets/custom_stepper.dart';
-import '../widgets/payment_card.dart';
+import '../widgets/calculation_container.dart';
 import '../widgets/section_title_text.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -177,7 +177,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 )),
               ),
 
-                PaymentCard(
+                CalculationContainer(
                   title: "Price",
                   totalCount: "\$${productDetailController.productDetails.product?.price ?? 0}",
                   buttonName: 'Add to cart',

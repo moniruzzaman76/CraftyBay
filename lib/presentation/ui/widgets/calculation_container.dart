@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 
-class PaymentCard extends StatelessWidget {
-  const PaymentCard({
+class CalculationContainer extends StatelessWidget {
+  const CalculationContainer({
     super.key, this.padding, required this.title, required this.totalCount, required this.buttonName, this.titleFontSize, required this.child,
   });
 
@@ -11,7 +11,6 @@ class PaymentCard extends StatelessWidget {
   final String totalCount;
   final String  buttonName;
   final double? titleFontSize;
-  //final VoidCallback onTab;
   final Widget child;
 
   @override

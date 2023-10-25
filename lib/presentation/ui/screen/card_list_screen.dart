@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/card_list_controller.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/CheckOutScreen.dart';
 import 'package:get/get.dart';
 import '../../../State_holders/main_botom_nav_controller.dart';
 import '../widgets/add_to_card_list.dart';
-import '../widgets/payment_card.dart';
+import '../widgets/calculation_container.dart';
 
 class CardScreen extends StatefulWidget {
   const CardScreen({Key? key}) : super(key: key);
@@ -50,8 +51,7 @@ class _CardScreenState extends State<CardScreen> {
                 child: CircularProgressIndicator(),
               );
             }
-            if (cardListController.cardListModel.data == null ||
-                cardListController.cardListModel.data!.isEmpty) {
+            if (cardListController.cardListModel.data == null || cardListController.cardListModel.data!.isEmpty) {
               return const Center(
                 child: Text("Empty Card List"),
               );
@@ -66,8 +66,7 @@ class _CardScreenState extends State<CardScreen> {
                         child: ListView.builder(
                             itemCount: cardListController.cardListModel.data?.length ?? 0,
                             itemBuilder: (context, int index) {
-                              print(cardListController
-                                  .cardListModel.data?.length);
+                              print(cardListController.cardListModel.data?.length);
                               return ProductAddToCard(
                                 cardData: cardListController
                                     .cardListModel.data![index],
@@ -77,14 +76,18 @@ class _CardScreenState extends State<CardScreen> {
                     ],
                   ),
                 ),
-                PaymentCard(
+                CalculationContainer(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 17),
                   title: "Total Price",
                   titleFontSize: 12,
                   totalCount: '\$${Get.find<CardListController>().totalPrice}',
                   buttonName: 'check out',
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (Get.find<CardListController>().cardListModel.data?.isNotEmpty ?? false) {
+                        Get.to(() => const CheckOutScreen());
+                      }
+                    },
                     child: const Text("Add To Card"),
                   ),
                 ),
