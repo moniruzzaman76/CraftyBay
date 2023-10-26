@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/create_invoice_response_controller.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/webview_screen.dart';
 import 'package:get/get.dart';
 
 class CheckOutScreen extends StatefulWidget {
@@ -39,7 +40,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
         builder: (createInvoiceController) {
 
           if(createInvoiceController.createInvoiceInProgress){
-            const Center(child: CircularProgressIndicator(),);
+            return const Center(child: CircularProgressIndicator());
           }
 
           if(!isCompleted){
@@ -56,7 +57,9 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
               var paymentData = createInvoiceController.createInvoiceData.paymentMethod![index];
 
               return ListTile(
-                onTap: (){},
+                onTap: (){
+                  Get.to(()=>WebViewScreen(paymentUrl: paymentData.redirectGatewayURL!));
+                },
                 leading: Image.network(paymentData.logo ?? ""),
                 title:  Text(paymentData.name ?? ""),
                 );

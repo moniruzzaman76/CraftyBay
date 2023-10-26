@@ -34,7 +34,9 @@ class _HomeSliderState extends State<HomeSlider> {
                     margin: const EdgeInsets.symmetric(horizontal: 5.0),
                     decoration: const BoxDecoration(color: Colors.amber),
                     alignment: Alignment.center,
-                    child:Image.network(widget.slidersData.first.image ?? ""),
+                    child:Image.network(widget.slidersData.first.image ?? "",
+                        height: double.infinity,width:double.infinity,fit: BoxFit.cover,
+                    ),
                 );
               },
             );

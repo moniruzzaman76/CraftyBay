@@ -20,9 +20,11 @@ class CreateInvoiceController extends GetxController{
 
     _createInvoiceInProgress =true;
     update();
+
     final NetworkResponse response = await NetworkCaller().getRequest(Urls.invoiceCreate);
     _createInvoiceInProgress =false;
     update();
+
     if(response.isSuccess){
       _createInvoiceResponseModel = CreateInvoiceResponseModel.fromJson(response.responseJson!);
       return true;

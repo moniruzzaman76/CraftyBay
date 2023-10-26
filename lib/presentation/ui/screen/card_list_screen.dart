@@ -45,6 +45,7 @@ class _CardScreenState extends State<CardScreen> {
               color: Colors.black,
             ),
           ),
+
           body: GetBuilder<CardListController>(builder: (cardListController) {
             if (cardListController.cardListInProgress) {
               return const Center(

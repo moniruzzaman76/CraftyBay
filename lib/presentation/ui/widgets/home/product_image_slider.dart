@@ -33,7 +33,7 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(color: Colors.grey.shade300),
                     alignment: Alignment.center,
-                    child: Image.network(imageUrl)
+                    child: Image.network(imageUrl,height: double.infinity,width: double.infinity,fit: BoxFit.cover,)
                 );
               },
             );
