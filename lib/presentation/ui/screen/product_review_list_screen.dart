@@ -64,7 +64,7 @@ class _ProductReviewListScreenState extends State<ProductReviewListScreen> {
                         padding: const EdgeInsets.all(5.0),
                         child: Card(
                           child: Container(
-                            padding: const EdgeInsets.all(12),
+                            padding: const EdgeInsets.all(10),
                             child: ListTile(
                               title: Row(
                                 children: [
@@ -74,17 +74,11 @@ class _ProductReviewListScreenState extends State<ProductReviewListScreen> {
                                     child: const Icon(Icons.person_outline_outlined,color: Colors.grey,),
                                   ),
                                   const SizedBox(width: 12,),
-                                   Text(reviewData[index].profile?.firstName ?? "",style: const TextStyle(
+                                   Text(reviewData[index].profile?.cusName ?? "Unknown",style: const TextStyle(
                                     color: Colors.black54,
                                     fontSize: 17,
                                     fontWeight: FontWeight.w600,
                                   ),),
-                                  const SizedBox(width: 8,),
-                                   Text(reviewData[index].profile?.lastName ?? "",style: const TextStyle(
-                                    color: Colors.black54,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w600,
-                                  ),)
                                 ],
                               ),
                               subtitle: Text(reviewData[index].description ?? "",style: const TextStyle(
@@ -92,6 +86,15 @@ class _ProductReviewListScreenState extends State<ProductReviewListScreen> {
                                 fontSize: 13,
                                 letterSpacing: .2,
                               ),),
+                              trailing: SizedBox(
+                                width: 45,
+                                child: Row(
+                                  children: [
+                                    Text(reviewData[index].rating ?? "0"),
+                                    const Icon(Icons.star,color: Colors.amber,),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -124,7 +127,9 @@ class _ProductReviewListScreenState extends State<ProductReviewListScreen> {
                        mini: true,
                        backgroundColor: AppColors.primaryColor,
                          onPressed: (){
-                         Get.to(()=>CreateReviewScreen(productId: widget.productId,));
+                         Get.to(()=>CreateReviewScreen(
+                           productId: widget.productId,
+                         ));
                          },
                        child: const Icon(Icons.add),
                      ),

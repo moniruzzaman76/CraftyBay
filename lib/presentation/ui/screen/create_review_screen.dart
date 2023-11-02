@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/create_review_controller.dart';
 import 'package:flutter_ecommerce/State_holders/review_list_controller.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 
 
 class CreateReviewScreen extends StatefulWidget {
   final int productId;
+
   const CreateReviewScreen({Key? key, required this.productId}) : super(key: key);
 
   @override
@@ -13,13 +15,12 @@ class CreateReviewScreen extends StatefulWidget {
 }
 
 class _CreateReviewScreenState extends State<CreateReviewScreen> {
-  TextEditingController firstNameEditingController = TextEditingController();
 
-  TextEditingController lastNameEditingController = TextEditingController();
-
-  TextEditingController reviewEditingController = TextEditingController();
+  final TextEditingController reviewEditingController = TextEditingController();
+  final TextEditingController ratingEditingController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+  double ratingCount = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +36,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
           color: Colors.black54,
         ),
       ),
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -43,33 +45,63 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
               key: _formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Enter your First First';
-                      }
-                      return null;
-                    },
-                    controller: firstNameEditingController,
-                    decoration: const InputDecoration(
-                      hintText: "First Name",
-                    ),
-                  ),
-                  const SizedBox(height: 16,),
-                  TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Enter your Last Name';
-                      }
-                      return null;
-                    },
-                    controller: lastNameEditingController,
-                    decoration: const InputDecoration(
-                      hintText: "Last Name",
-                    ),
-                  ),
-                  const SizedBox(height: 16,),
+                  Text("What is your rate?",style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                    color: Colors.blueGrey[600],
+                  ),),
+                  const SizedBox(height: 20,),
+
+                RatingBar.builder(
+                initialRating: 1,
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                  itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                itemCount: 5,
+                itemBuilder: (context, _) {
+                  return const Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  );
+                },
+                onRatingUpdate: (rating) {
+                  ratingCount = rating;
+                  if(mounted){
+                    setState(() {});
+                  }
+                },
+              ),
+                  const SizedBox(height: 10,),
+                  Text("Rating : ${ratingCount.toString()}",style: const TextStyle(
+                    fontSize: 15,
+                    letterSpacing: .5,
+                  ),),
+                  // SizedBox(
+                  //   height: 60,
+                  //   width: 200,
+                  //   child: TextFormField(
+                  //     readOnly: true,
+                  //     controller: ratingEditingController,
+                  //     decoration: InputDecoration(
+                  //         hintText: "            Rating  ${ratingCount.toString()}",
+                  //       border: const OutlineInputBorder(borderSide: BorderSide.none)
+                  //     ),
+                  //
+                  //   ),
+                  // ),
+                  const SizedBox(height: 20,),
+                  Text(
+                    '''Please Share Your opinion
+        about the product''',
+                    style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                    color: Colors.blueGrey[600],
+                  ),),
+                  const SizedBox(height: 20,),
                   TextFormField(
                     maxLines: 10,
                     keyboardType: TextInputType.emailAddress,
@@ -100,10 +132,10 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                                   createReviewController.createReview(
                                     reviewEditingController.text.trim(),
                                       widget.productId,
+                                      ratingCount,
+
                                   ).then((result) {
                                     if(result == true){
-                                      firstNameEditingController.clear();
-                                    lastNameEditingController.clear();
                                     reviewEditingController.clear();
 
                                     Get.find<ProductReviewController>().getProductReview(widget.productId);
@@ -116,15 +148,15 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                                       );
                                     }else{
                                       Get.snackbar(
-                                        'Thank you for your feedback!',
-                                        'Successfully added review',
+                                        'failed!',
+                                        'Product Review failed.Try again',
                                         backgroundColor: Colors.red,
                                         snackPosition: SnackPosition.BOTTOM,
                                       );
                                     }
                                   });
                                 }
-                              }, child: const Text("Submit")),
+                              }, child: const Text("Send Review")),
                         ),
                       );
                     }
