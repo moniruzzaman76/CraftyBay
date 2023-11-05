@@ -53,6 +53,7 @@ class WishListProductCard extends StatelessWidget {
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                         ),),
+                        const SizedBox(height: 2,),
                         Row(
                           children: [
                             Text("\$${wishData.product?.price ?? "1000"}",style: const TextStyle(
@@ -62,6 +63,7 @@ class WishListProductCard extends StatelessWidget {
                             ),),
                             const SizedBox(width: 10,),
                             const Icon(Icons.star, color: Colors.amber,size: 17,),
+                            const SizedBox(width: 5,),
                             Text(wishData.product?.star?.toStringAsFixed(1) ?? "4.5",style: const TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
@@ -70,11 +72,11 @@ class WishListProductCard extends StatelessWidget {
                             InkWell(
                               onTap:onPress,
                               child: const Card(
-                                color: AppColors.primaryColor,
+                                color: Colors.white,
                                 child: Icon(
-                                  Icons.favorite_border_outlined,
-                                  color: Colors.white,
-                                  size: 14,
+                                  Icons.delete_forever,
+                                  color: Colors.red,
+                                  size: 18,
                                 ),
                               ),
                             ),

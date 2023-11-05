@@ -60,7 +60,7 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
               BottomNavigationBarItem(icon: Icon(Icons.home,),label: "Home"),
               BottomNavigationBarItem(icon: Icon(Icons.category_outlined,),label: "Category"),
               BottomNavigationBarItem(icon: Icon(Icons.shopping_basket_rounded,),label: "Card"),
-              BottomNavigationBarItem(icon: Icon(Icons.card_giftcard_outlined,),label: "Wish"),
+              BottomNavigationBarItem(icon: Icon(Icons.favorite_border_outlined,),label: "Wish"),
             ],
           ),
         );

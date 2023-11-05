@@ -13,6 +13,7 @@ import 'package:flutter_ecommerce/presentation/ui/widgets/category_card.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/home/home_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import '../widgets/circular_button.dart';
 import '../widgets/product_card.dart';
 import '../widgets/home/section_header.dart';
@@ -27,6 +28,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
  final ValueNotifier selectedSlider = ValueNotifier(0);
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
            ),
           const SizedBox(width: 10,),
           CircularIconButton(
-            onPress: (){},
+            onPress: () {
+              launchUrlString("tel://${8801740641349}");
+            },
             icon: Icons.phone_outlined,
           ),
           const SizedBox(width: 10,),
@@ -223,6 +227,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+
 }
 
 

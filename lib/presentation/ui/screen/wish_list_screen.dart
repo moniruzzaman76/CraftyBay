@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/State_holders/wishList_delete_controller.dart';
 import 'package:flutter_ecommerce/State_holders/wish_list_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/widgets/wishList_product_card.dart';
 import 'package:get/get.dart';
@@ -65,7 +66,30 @@ class _WishListScreenState extends State<WishListScreen> {
                     itemBuilder: (context, index){
                       return WishListProductCard(
                           wishData: wishListController.wishListModel.data![index],
-                        onPress: () { },
+                        onPress: () async{
+                            await Get.find<RemoveWishListController>().deleteWishList(wishListController.wishListModel.data![index].productId!).then((result){
+                              if(result == true){
+                                Get.snackbar(
+                                    "Delete", "Product Successfully Delete",
+                                  colorText: Colors.white,
+                                  backgroundColor: Colors.green[600],
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  icon: const Icon(Icons.delete_forever, color: Colors.white),
+                                  forwardAnimationCurve: Curves.easeInBack,
+                                );
+                              }else{
+                                Get.snackbar(
+                                  "Failed", "Please try Again",
+                                  colorText: Colors.white,
+                                  backgroundColor: Colors.red[600],
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  icon: const Icon(Icons.delete_forever, color: Colors.white),
+                                  forwardAnimationCurve: Curves.easeInBack,
+                                );
+                              }
+                            });
+                           await Get.find<WishListController>().getWishList();
+                        },
                       );
                     }
                 ),

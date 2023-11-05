@@ -19,5 +19,5 @@ class Urls {
   static String  createProfile = '$_baseUrl/CreateProfile';
   static String  readProfile = '$_baseUrl/ReadProfile';
   static String  invoiceCreate = '$_baseUrl/InvoiceCreate';
-
+  static String removeWishList(int id) => '$_baseUrl/RemoveWishList/$id';
 }

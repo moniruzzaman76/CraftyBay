@@ -45,6 +45,9 @@ dependencies:
   connectivity_plus: ^5.0.1
   flutter_launcher_icons: ^0.13.1
   webview_flutter: ^4.4.1
+  flutter_phone_direct_caller: ^2.1.1
+  url_launcher: ^6.2.1
+
 
 dev_dependencies:
   flutter_test:
