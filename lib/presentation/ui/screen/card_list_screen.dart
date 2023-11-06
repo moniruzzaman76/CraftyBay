@@ -89,7 +89,7 @@ class _CardScreenState extends State<CardScreen> {
                         Get.to(() => const CheckOutScreen());
                       }
                     },
-                    child: const Text("Add To Card"),
+                    child: const Text("Check out"),
                   ),
                 ),
               ],

@@ -1,4 +1,3 @@
-import 'package:flutter_ecommerce/State_holders/CreateWishListController.dart';
 import 'package:flutter_ecommerce/State_holders/create_add_to_card_controller.dart';
 import 'package:flutter_ecommerce/State_holders/card_list_controller.dart';
 import 'package:flutter_ecommerce/State_holders/category_controller.dart';
@@ -15,6 +14,7 @@ import 'package:flutter_ecommerce/State_holders/read_profile_controller.dart';
 import 'package:get/get.dart';
 import '../State_holders/create_profile_controller.dart';
 import '../State_holders/create_review_controller.dart';
+import '../State_holders/create_wishList_controller.dart';
 import '../State_holders/email_verification_controller.dart';
 import '../State_holders/main_botom_nav_controller.dart';
 import '../State_holders/review_list_controller.dart';

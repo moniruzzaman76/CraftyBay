@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/State_holders/CreateWishListController.dart';
+import 'package:flutter_ecommerce/State_holders/create_wishList_controller.dart';
 import 'package:flutter_ecommerce/State_holders/create_add_to_card_controller.dart';
 import 'package:flutter_ecommerce/State_holders/product_details_controller.dart';
 import 'package:flutter_ecommerce/presentation/ui/screen/product_review_list_screen.dart';

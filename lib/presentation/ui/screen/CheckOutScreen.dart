@@ -33,7 +33,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+        //centerTitle: true,
         title: const Text("CheckOut "),
       ),
       body: GetBuilder<CreateInvoiceController>(
@@ -58,7 +58,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
 
               return ListTile(
                 onTap: (){
-                  Get.to(()=>WebViewScreen(paymentUrl: paymentData.redirectGatewayURL!));
+                  Get.off(()=>WebViewScreen(paymentUrl: paymentData.redirectGatewayURL!));
                 },
                 leading: Image.network(paymentData.logo ?? ""),
                 title:  Text(paymentData.name ?? ""),
