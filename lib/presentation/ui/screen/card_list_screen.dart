@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/card_list_controller.dart';
-import 'package:flutter_ecommerce/presentation/ui/screen/CheckOutScreen.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/payment/CheckOutScreen.dart';
 import 'package:get/get.dart';
 import '../../../State_holders/main_botom_nav_controller.dart';
 import '../widgets/add_to_card_list.dart';

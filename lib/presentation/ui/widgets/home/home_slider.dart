@@ -21,12 +21,12 @@ class _HomeSliderState extends State<HomeSlider> {
         CarouselSlider(
           options: CarouselOptions(
               height: 180.0,
-              autoPlay: false,
+              autoPlay: true,
               autoPlayInterval: const Duration(seconds: 3),
               onPageChanged: (int page, _) {
                 _selectedSlider.value = page;
               }),
-          items: widget.slidersData.map((slider) {
+          items: widget.slidersData.map((slidersData) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
@@ -34,7 +34,8 @@ class _HomeSliderState extends State<HomeSlider> {
                     margin: const EdgeInsets.symmetric(horizontal: 5.0),
                     decoration: const BoxDecoration(color: Colors.amber),
                     alignment: Alignment.center,
-                    child:Image.network(widget.slidersData.first.image ?? "",
+                    child:Image.network(
+                     slidersData.image ?? "",
                         height: double.infinity,width:double.infinity,fit: BoxFit.cover,
                     ),
                 );

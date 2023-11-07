@@ -29,7 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
  final ValueNotifier selectedSlider = ValueNotifier(0);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,23 +38,20 @@ class _HomeScreenState extends State<HomeScreen> {
         title:SvgPicture.asset(ImageAssets.homeLogo),
         actions: [
            CircularIconButton(
-             onPress: (){
-
-             },
+             onPress: (){},
              icon: Icons.person_outline_outlined,
            ),
           const SizedBox(width: 10,),
           CircularIconButton(
-            onPress: () {
-              launchUrlString("tel://${8801740641349}");
+            onPress: () async{
+             await launchUrlString("tel://+${8801740641349}");
             },
             icon: Icons.phone_outlined,
           ),
           const SizedBox(width: 10,),
           CircularIconButton(
-            onPress: ()async{
-               await AuthController.clear();
-               await AuthController.getAccessToken();
+            onPress: (){
+              showLogoutDialog();
             },
             icon: Icons.login_outlined,
           ),
@@ -228,7 +224,46 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
+ void showLogoutDialog(){
+   Get.dialog(
+     AlertDialog(
+       title: const Center(child: Text('LogOut!',style: TextStyle(
+         color: Colors.red,
+         fontSize: 25,
+         fontWeight: FontWeight.bold,
+       ),)),
+       content: const Text('Do you want to logout from profile?',style: TextStyle(
+         color: Colors.black,
+         fontWeight: FontWeight.w500,
+         letterSpacing: .3,
+       )),
+       actions: [
+         Row(
+           children: [
+             TextButton(
+                 onPressed: ()async{
+               await AuthController.clear();
+               await AuthController.getAccessToken();
+               Get.back();
+             }, child: const Text("Yes",style: TextStyle(
+               color: Colors.green,
+               fontWeight: FontWeight.w500,
+               fontSize: 18,
+             ))),
+             const Spacer(),
+             TextButton(onPressed: (){
+               Get.back();
+             }, child: const Text("No",style: TextStyle(
+               color: Colors.red,
+               fontSize: 18,
+               fontWeight: FontWeight.w500,
+             ))),
+           ],
+         )
+       ],
+     ),
+   );
+ }
 }
 
 

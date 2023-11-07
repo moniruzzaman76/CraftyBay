@@ -2,7 +2,13 @@
 
 A new Flutter project.
 
-![image](https://github.com/moniruzzaman76/CraftyBay/assets/107347380/76b855df-be9d-4541-b0c9-e37f7aeb9456)
+![img.png](img.png)
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
+![img_6.png](img_6.png)
+
+
 
 ## Description
 CraftyBay is a feature-rich ecommerce app designed to provide users with a seamless and enjoyable shopping experience. With a focus on user-friendliness and a wide range of products, CraftyBay allows users to explore, purchase, and review products with ease.
@@ -126,18 +132,19 @@ CraftyBoy/
     │       │   │   ├── email_verify_screen.dart
     │       │   │   ├── otp_verify_screen.dart
     │       │   │   └── create_profile_screen.dart
+    │       │   ├── payment/
+    │       │   │   ├── CheckOutScreen.dart
+    │       │   │   └──  webview_screen.dart
     │       │   ├── botom_nav_bar_screen.dart
     │       │   ├── card_list_screen.dart
     │       │   ├── categories_screen.dart
     │       │   ├── category_product_list_screen.dart
-    │       │   ├── CheckOutScreen.dart
     │       │   ├── create_review_screen.dart
     │       │   ├── home_screen.dart
     │       │   ├── product_details_screen.dart
     │       │   ├── product_list_screen.dart
     │       │   ├── product_review_list_screen.dart
     │       │   ├── splash_screen.dart
-    │       │   ├── webview_screen.dart
     │       │   └── wish_list_screen.dart
     │       ├── utils/
     │       │   ├── app_colors.dart

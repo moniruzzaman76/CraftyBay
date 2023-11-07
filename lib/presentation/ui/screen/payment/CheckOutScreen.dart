@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/State_holders/create_invoice_response_controller.dart';
-import 'package:flutter_ecommerce/presentation/ui/screen/webview_screen.dart';
+import 'package:flutter_ecommerce/presentation/ui/screen/payment/webview_screen.dart';
 import 'package:get/get.dart';
 
 class CheckOutScreen extends StatefulWidget {

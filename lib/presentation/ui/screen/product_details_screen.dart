@@ -199,12 +199,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 "Success",
                                 "Product Added to Card",
                                 backgroundColor: Colors.green,
+                                colorText: Colors.white,
                               );
                             } else {
                               Get.snackbar(
                                 "Please Login",
                                 "Then Purchase Product your Choose",
-                                backgroundColor: Colors.green,
+                                backgroundColor: Colors.red,
+                                colorText: Colors.white,
                               );
                             }
                           });
@@ -223,7 +225,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   }
 
 
-  SizedBox colorPicker(List<String> availableColors) {
+  Widget colorPicker(List<String> availableColors) {
     return SizedBox(
       height: 28,
       child: ListView.separated(
@@ -265,6 +267,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       ),
     );
   }
+
   SizedBox sizePicker(List<String> availableSizes) {
     return SizedBox(
       height: 28,
