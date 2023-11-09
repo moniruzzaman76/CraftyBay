@@ -1,6 +1,8 @@
-# flutter_ecommerce
+# Crafty Bay ( E-commmerce App)
+Ecomerce app using Flutter, Rest Api with two factor authentication and payment getway.
 
-A new Flutter project.
+#APk file for App
+[Crafty Bay](https://drive.google.com/file/d/1x7pHkaoxMn7ewDqIvhbGdqYe18ncA6Qt/view?usp=sharing)
 
 ![img.png](img.png)
 ![img_1.png](img_1.png)
