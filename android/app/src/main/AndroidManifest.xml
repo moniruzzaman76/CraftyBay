@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET"/> <!-- Add this -->
 
     <application
-        android:label="flutter_ecommerce"
+        android:label="Crafty Bay"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

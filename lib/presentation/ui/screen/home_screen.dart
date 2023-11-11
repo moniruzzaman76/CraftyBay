@@ -43,8 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
            ),
           const SizedBox(width: 10,),
           CircularIconButton(
-            onPress: () async{
-             await launchUrlString("tel://+${8801740641349}");
+            onPress: () async {
+             await launchUrlString("tel:+${8801740641349}");
             },
             icon: Icons.phone_outlined,
           ),

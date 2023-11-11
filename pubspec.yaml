@@ -43,15 +43,20 @@ dependencies:
   shared_preferences: ^2.2.1
   flutter_rating_bar: ^4.0.1
   connectivity_plus: ^5.0.1
-  flutter_launcher_icons: ^0.13.1
   webview_flutter: ^4.4.1
-  flutter_phone_direct_caller: ^2.1.1
   url_launcher: ^6.2.1
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/app_logo.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -77,6 +82,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/
+    - assets/logo/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
